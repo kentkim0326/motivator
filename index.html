@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kent Kim — The Register</title>
+<meta name="description" content="Kent Kim taught more than a million students across Korea between 1996 and 2016, ran an Ivy League admissions academy in New York and Seoul, and shipped thirty-eight products in the last six months. He speaks at international schools about what students can still prove when AI can produce the work." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+<style>
+:root{
+  --paper:#FCFBF8;
+  --surface:#F5F4EE;
+  --ink:#161A18;
+  --muted:#6C736C;
+  --pine:#1C3A31;
+  --pine-soft:#2E5A4C;
+  --live:#2F7F52;
+  --hair:#DFDED6;
+  --hair-strong:#C9C8BE;
+  --measure:64ch;
+  --step--1:0.8125rem;
+  --step-0:1.0625rem;
+  --step-1:1.3rem;
+  --step-2:1.75rem;
+  --step-3:2.4rem;
+  --step-4:3.4rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1311;
+    --surface:#171C19;
+    --ink:#E9EAE4;
+    --muted:#939A92;
+    --pine:#8FB6A5;
+    --pine-soft:#A6C7B8;
+    --live:#59BE85;
+    --hair:#28302C;
+    --hair-strong:#3A443E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1311;
+  --surface:#171C19;
+  --ink:#E9EAE4;
+  --muted:#939A92;
+  --pine:#8FB6A5;
+  --pine-soft:#A6C7B8;
+  --live:#59BE85;
+  --hair:#28302C;
+  --hair-strong:#3A443E;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:var(--step-0);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.col{max-width:var(--measure)}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:var(--step--1);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0;
+}
+h1,h2,h3{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:var(--step-2);line-height:1.2;letter-spacing:-0.01em}
+h3{font-size:var(--step-1);line-height:1.3}
+p{margin:0}
+
+/* ---------- section frame ---------- */
+section{border-top:1px solid var(--hair)}
+.sec-pad{padding:clamp(56px,8vw,96px) 0}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.stack{display:flex;flex-direction:column;gap:20px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--hair);flex-wrap:wrap;
+}
+.masthead .name{font-family:Newsreader,Georgia,serif;font-size:var(--step-1);letter-spacing:-0.01em}
+.masthead nav{display:flex;gap:22px;flex-wrap:wrap}
+.masthead nav a{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;
+}
+.masthead nav a:hover{color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(48px,7vw,84px) 0 clamp(40px,6vw,64px)}
+.count-row{display:flex;align-items:flex-start;gap:clamp(20px,4vw,44px);flex-wrap:wrap}
+.count{
+  font-family:Newsreader,Georgia,serif;font-weight:300;
+  letter-spacing:-0.04em;color:var(--pine);
+  font-variant-numeric:tabular-nums;
+}
+.stat{display:flex;flex-direction:column;gap:12px;min-width:0}
+.count{font-size:clamp(2.9rem,8.5vw,5.4rem);line-height:0.95}
+#count1::after{content:"+";color:var(--pine-soft)}
+.count.small{font-size:clamp(3.4rem,10vw,6.2rem)}
+.stat .eyebrow{border-top:1px solid var(--hair-strong);padding-top:10px}
+.letters{
+  margin-top:8px;border-left:2px solid var(--pine);padding:4px 0 4px clamp(18px,3vw,30px);
+  display:flex;flex-direction:column;gap:16px;
+}
+.letters p{max-width:60ch;color:var(--muted)}
+.letters p.big{font-size:var(--step-1);line-height:1.45;color:var(--ink);font-family:Newsreader,Georgia,serif}
+.namelist{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  line-height:1.9;color:var(--ink);
+}
+.tv{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+@media (min-width:700px){.tv{grid-template-columns:repeat(2,1fr)}}
+.tv a,.tv div{
+  background:var(--paper);padding:16px 20px;text-decoration:none;
+  display:flex;flex-direction:column;gap:4px;transition:background .14s ease;
+}
+.tv a:hover{background:var(--surface)}
+.tv .ch{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);
+}
+.tv .pg{color:var(--muted);font-size:var(--step--1)}
+.tv a .pg::after{content:" ↗";color:var(--pine)}
+.books{
+  columns:2;column-gap:36px;font-size:var(--step--1);line-height:1.95;color:var(--ink);
+  margin-top:4px;
+}
+@media (max-width:640px){.books{columns:1}}
+
+/* ---------- media ---------- */
+figure{margin:0}
+.band{margin-top:38px}
+.band img{width:100%;height:auto;display:block;border:1px solid var(--hair)}
+.band figcaption,.duo figcaption,.covers figcaption{
+  margin-top:10px;color:var(--muted);font-size:var(--step--1);line-height:1.55;max-width:60ch;
+}
+.duo{display:grid;gap:20px;margin-top:38px}
+@media (min-width:760px){.duo{grid-template-columns:1fr 1fr}}
+.duo img{width:100%;height:auto;display:block;border:1px solid var(--hair)}
+.covers{margin-top:38px}
+.cover-row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+.cover-row img{height:210px;width:auto;display:block;border:1px solid var(--hair)}
+@media (max-width:640px){.cover-row img{height:150px}}
+.videos{display:grid;gap:18px;margin-top:8px}
+@media (min-width:820px){.videos{grid-template-columns:1fr 1fr}}
+.vid{display:flex;flex-direction:column;gap:10px}
+.vid .frame{position:relative;padding-top:56.25%;background:var(--surface);border:1px solid var(--hair)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid .cap{color:var(--muted);font-size:var(--step--1);line-height:1.5}
+.vid .cap b{color:var(--ink);font-weight:500;display:block}
+.vid .cap .ch2{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);
+}
+.hero h1{
+  font-size:var(--step-3);line-height:1.14;letter-spacing:-0.015em;
+  margin-top:clamp(32px,5vw,52px);max-width:22ch;
+}
+.hero h1 em{font-style:italic;color:var(--pine)}
+.hero-body{margin-top:22px;max-width:var(--measure);display:flex;flex-direction:column;gap:16px;color:var(--muted)}
+.hero-body strong{color:var(--ink);font-weight:500}
+
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.btn{
+  display:inline-block;padding:13px 22px;border-radius:2px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--pine);transition:background .16s ease,color .16s ease;
+}
+.btn-solid{background:var(--pine);color:var(--paper)}
+.btn-solid:hover{background:var(--pine-soft)}
+.btn-ghost{color:var(--pine)}
+.btn-ghost:hover{background:var(--surface)}
+
+/* ---------- claim / evidence pairs ---------- */
+.pair{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:8px 40px;
+  padding:22px 0;border-bottom:1px solid var(--hair);
+}
+@media (min-width:820px){
+  .pair{grid-template-columns:15rem minmax(0,1fr)}
+}
+.pair:last-child{border-bottom:0}
+.pair dt{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.06em;color:var(--pine);line-height:1.5;
+}
+.pair dd{margin:0;color:var(--ink)}
+.pair dd small{display:block;color:var(--muted);font-size:var(--step--1);margin-top:5px;line-height:1.55}
+dl{margin:0}
+
+/* ---------- session cards ---------- */
+.cards{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:8px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--paper);padding:26px 24px;display:flex;flex-direction:column;gap:12px}
+.card .who{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);
+}
+.card p{color:var(--muted);font-size:var(--step--1);line-height:1.6}
+
+.demo{
+  margin-top:36px;border:1px solid var(--pine);padding:clamp(24px,4vw,36px);
+  display:flex;flex-direction:column;gap:14px;background:var(--surface);
+}
+.demo h3{color:var(--pine)}
+.demo p{max-width:58ch}
+
+/* ---------- register ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filter{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.06em;text-transform:uppercase;
+  padding:8px 14px;border:1px solid var(--hair-strong);background:transparent;
+  color:var(--muted);cursor:pointer;border-radius:2px;transition:all .15s ease;
+}
+.filter:hover{color:var(--ink);border-color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--paper)}
+.filter .n{font-variant-numeric:tabular-nums;opacity:.65;margin-left:7px}
+
+.register{border-top:1px solid var(--hair-strong)}
+.row{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;
+  align-items:baseline;padding:16px 0;border-bottom:1px solid var(--hair);
+  text-decoration:none;transition:background .14s ease;
+}
+@media (min-width:820px){
+  .row{grid-template-columns:2.6rem 15rem minmax(0,1fr) 5.5rem;padding:14px 0}
+}
+.row:hover{background:var(--surface)}
+.row .idx{
+  display:none;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:var(--step--1);color:var(--muted);font-variant-numeric:tabular-nums;
+}
+@media (min-width:820px){.row .idx{display:block}}
+.row .title{font-weight:500;line-height:1.4}
+.row .desc{color:var(--muted);font-size:var(--step--1);line-height:1.55;grid-column:1/-1}
+@media (min-width:820px){.row .desc{grid-column:auto}}
+.row .tag{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);
+  justify-self:start;white-space:nowrap;display:flex;align-items:center;gap:7px;
+}
+@media (min-width:820px){.row .tag{justify-self:end}}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+.dot.code{background:var(--hair-strong)}
+.row[hidden]{display:none}
+
+.reg-note{margin-top:24px;color:var(--muted);font-size:var(--step--1);max-width:var(--measure)}
+
+/* ---------- recognition ---------- */
+.awards{display:flex;flex-direction:column;margin-top:4px}
+.award{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:baseline;flex-wrap:wrap}
+.award .yr{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  color:var(--pine);min-width:4rem;font-variant-numeric:tabular-nums;
+}
+.award .what{flex:1;min-width:16rem}
+.award .what small{display:block;color:var(--muted);font-size:var(--step--1);margin-top:4px}
+
+/* ---------- booking ---------- */
+.booking{background:var(--surface)}
+.booking .col{max-width:58ch}
+.contact{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
+.contact .addr{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step-1);
+  color:var(--pine);text-decoration:none;border-bottom:1px solid var(--pine);
+  padding-bottom:2px;word-break:break-all;
+}
+.contact .addr:hover{color:var(--pine-soft);border-color:var(--pine-soft)}
+.copy{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:8px 14px;border:1px solid var(--hair-strong);background:transparent;
+  color:var(--muted);cursor:pointer;border-radius:2px;transition:all .15s ease;
+}
+.copy:hover{color:var(--ink);border-color:var(--ink)}
+.copy[data-done="1"]{color:var(--live);border-color:var(--live)}
+.fallback{color:var(--muted);font-size:var(--step--1)}
+
+footer{border-top:1px solid var(--hair);padding:30px 0 44px;color:var(--muted);font-size:var(--step--1)}
+footer .fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--muted)}
+
+.fade{opacity:0;transform:translateY(6px);animation:rise .5s ease forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="name">Kent Kim <span style="color:var(--muted);font-size:var(--step--1)">· Seoul</span></div>
+    <nav>
+      <a href="#schools">For schools</a>
+      <a href="#background">Teaching</a>
+      <a href="#letters">1996</a>
+      <a href="#register">The register</a>
+      <a href="#booking">Invite</a>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <div class="wrap">
+    <div class="hero">
+      <div class="count-row">
+        <div class="stat">
+          <div class="count" id="count1" aria-hidden="true">0</div>
+          <p class="eyebrow">People taught · 1996–2016</p>
+        </div>
+        <div class="stat">
+          <div class="count small" id="count2" aria-hidden="true">0</div>
+          <p class="eyebrow">Shipped · Mar–Aug 2026</p>
+        </div>
+      </div>
+
+      <h1>For twenty years I taught students how to win the old game. In the last six months I built thirty-eight things to find out what the <em>new one asks for</em>.</h1>
+
+      <div class="hero-body">
+        <p>I'm Kent Kim. I graduated in economics from Harvard in 1997, ran an Ivy League admissions academy in New York and Seoul, and spoke to more than a million students, parents and teachers across Korea between 1996 and 2016.</p>
+        <p style="color:var(--ink)">Then I spent six months building software at volume with AI, and came out of it convinced that <strong>what I used to teach students to optimise for is being repriced in front of us.</strong> That is what I come to schools to talk about — and everything on this page is something you can open and check.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-solid" href="#booking">Invite Kent to your school</a>
+        <a class="btn btn-ghost" href="#register">See all thirty-eight</a>
+      </div>
+
+      <figure class="band">
+        <img src="img/tgs-12.jpg" alt="Kent Kim at the Deother booth" loading="lazy" />
+        <figcaption>Kent Kim at the Korea Pavilion, gamescom asia &times; Thailand Game Show, Bangkok 2025.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ============ FOR SCHOOLS ============ -->
+  <section id="schools">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">01 · What I'd bring</p>
+        <h2 class="col">A session that ends with something that did not exist when it started.</h2>
+      </div>
+
+      <div class="col stack" style="color:var(--muted);margin-bottom:44px">
+        <p>The argument about whether students should use AI is finished. The harder question is what a student can now demonstrate that AI cannot simply hand them — and increasingly the answer is the finished, shipped thing itself. Something a stranger can open on their own phone and form a judgement about in ten seconds.</p>
+        <p style="color:var(--ink)">I am not guessing at this from outside. I ran an Ivy League admissions academy in New York and then in Seoul for eight years, taught SAT reading and writing, and wrote books about getting in. I am not here to sell any of that. I am here because I think <strong>the thing it optimised for is being repriced</strong>, and I would rather say so to a room of students than pretend otherwise.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <p class="who">Students · 60–90 min</p>
+          <h3>Build one thing, today</h3>
+          <p>An idea from the room becomes a deployed application before the session ends. Students scan the QR code and use it on their own phones. Then we talk about what that means for the next four years.</p>
+        </div>
+        <div class="card">
+          <p class="who">Teachers · 60 min</p>
+          <h3>Running it without a CS department</h3>
+          <p>The actual workflow, the three places it reliably breaks, how to assess work when the code is no longer evidence of effort, and how a history department ships a source-analysis tool as easily as maths ships a visualiser.</p>
+        </div>
+        <div class="card">
+          <p class="who">Parents · 60 min</p>
+          <h3>What changed, and what didn't</h3>
+          <p>An honest evening session: which parts of university preparation AI has genuinely altered, which parts are unchanged, and what it looks like when a teenager builds something real instead of collecting activities.</p>
+        </div>
+      </div>
+
+      <figure class="band">
+        <img src="img/tgs-07.jpg" alt="Visitors playing at the booth" loading="lazy" />
+        <figcaption>Visitors at the Korea Pavilion, Bangkok. Whether it is an exhibition hall or a school hall, the session works the same way: something exists, and people put their hands on it.</figcaption>
+      </figure>
+
+      <div class="demo">
+        <p class="eyebrow">The part that isn't a slide deck</p>
+        <h3>The live build</h3>
+        <p>I take a problem from the audience — something real at that school — and build a working application on stage. It deploys before the session ends, to a public address, with a QR code on screen. People open it, use it, and break it while I'm still standing there.</p>
+        <p>Then we take apart what just happened. That is the session. The talking is the debrief, not the event.</p>
+      </div>
+<figure class="band"><img src="img/ggc-03.jpg" alt="A visitor playing Fighting Nations at an exhibition booth" loading="lazy" /><figcaption>A visitor at the Global Game Challenge showcase, Chung-Ang University, playing a game we built. This is the moment a session is aiming at — somebody using the thing rather than hearing about it.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ TEACHING ============ -->
+  <section id="background">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">02 · Teaching</p>
+        <h2 class="col">Twenty years in front of rooms.</h2>
+        <p class="col" style="color:var(--muted)">Between 1996 and 2016 I spoke to more than a million students, parents, teachers and employees across Korea — universities, high schools, companies, city governments, a juvenile detention centre and an orphanage.</p>
+      </div>
+
+      <dl>
+        <div class="pair">
+          <dt>Schools &amp; universities</dt>
+          <dd>Daejeon University freshman orientation, 2,500 students. Sogang, Inha, Hanyang, Kookmin, Sungkyunkwan, Handong, Andong, Kyungnam, Jeonju, Chugye, Halla, Mokwon.
+            <small>Seoul Global High School (450) · Gyeonggi Academy of Foreign Languages · Seongnam Foreign Language High School · Cheonan Bugil High School (500) · Ilsan Daehwa High School (400) · Jirisan High School, two days residential.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>Parents</dt>
+          <dd>Three consecutive 1,000-parent lectures in one week — northern Seoul, southern Seoul, Busan (2005). Time Education Holdings, 1,200 parents (2008).</dd>
+        </div>
+        <div class="pair">
+          <dt>In the United States</dt>
+          <dd>Blair Academy, New Jersey (2003) · Northern Valley High School, New Jersey (2004) · KASCON at the University of Washington (2005) · lecture series in Denver, Flushing, Queens and New Jersey.</dd>
+        </div>
+        <div class="pair">
+          <dt>Companies &amp; government</dt>
+          <dd>LG Electronics · Samsung Heavy Industries · SK Chemicals · JVM · Maeil Business CEO design programme · Songpa, Seongdong, Yangcheon and Deogyang district offices · Chungcheong provincial government · the Korea Coast Guard Academy.</dd>
+        </div>
+        <div class="pair">
+          <dt>Where it is least comfortable</dt>
+          <dd>A juvenile detention centre in Gyeonggi (200 young people, 2007). Namsan orphanage. Children in Jeonju heading households alone.
+            <small>These are the rooms that taught me what a talk is actually for.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>On television</dt>
+          <dd>MBC — <em>Kent Kim's Harvard Study Strategy</em>, a 20-episode series (2009).
+            <small>Also a corporate course on time and network management for Korea HRD Broadcasting.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>Volunteering</dt>
+          <dd>Founded Bongsa Special Forces in 2010 with eight people. It now has 2,200.</dd>
+        </div>
+      </dl>
+
+      <div class="duo">
+        <figure>
+          <img src="img/tgs-08.jpg" alt="Kent Kim at the Korea Pavilion lineup board" loading="lazy" />
+          <figcaption>At the Korea Pavilion lineup board in Bangkok. Thirty years on, the job is still standing in front of people and explaining something.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/founder-sindonga.jpg" alt="Magazine feature" loading="lazy" />
+          <figcaption>Featured in Shindonga magazine. Korean press has followed the teaching work since 2000.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADMISSIONS ============ -->
+  <section id="admissions">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">03 · Admissions</p>
+        <h2 class="col">I taught the thing I am now asking schools to reconsider.</h2>
+        <p class="col" style="color:var(--muted)">This matters for how you read everything else on this page. I am not an outsider with an opinion about university admissions. I built a business on it, on two continents, for eight years.</p>
+      </div>
+
+      <dl>
+        <div class="pair">
+          <dt>Ivy Plan · New York</dt>
+          <dd>Founded 2003. SAT preparation for Korean-American students, across three locations in New York and New Jersey through 2005.</dd>
+        </div>
+        <div class="pair">
+          <dt>Ivy Plan · Seoul</dt>
+          <dd>Founded 2008 in Apgujeong with a fellow Harvard alumnus. I taught SAT reading and writing myself, 2009–2010.</dd>
+        </div>
+        <div class="pair">
+          <dt>Chungdahm Institute</dt>
+          <dd>Director, 2005. National lecture tour across its branches, 2005–2007.</dd>
+        </div>
+      </dl>
+
+      <figure class="band">
+        <img src="img/founder-timeblock.jpg" alt="Time Block book cover" loading="lazy" style="max-width:280px" />
+        <figcaption><em>Harvard Time Management: Time Block</em>. Most of what I sold parents for twenty years was a method for spending a teenager's hours well. That question has not gone away — what changed is what the hours should go into.</figcaption>
+      </figure>
+
+      <dl>
+        <div class="pair">
+          <dt>Before any of that</dt>
+          <dd>Taught weekend SAT classes at the Korean church in Cambridge, Massachusetts, 1995–96 — while still an undergraduate.</dd>
+        </div>
+        <div class="pair">
+          <dt>Written on the subject</dt>
+          <dd><em>Early Study Abroad at the Ivy League</em> · <em>I Can Get Into Harvard Too</em>, vols. 1–2 · <em>Studying Abroad, the Harvard Way</em> · <em>Harvard Time Management: Time Block</em>.</dd>
+        </div>
+        <div class="pair">
+          <dt>Wisemom</dt>
+          <dd>Founded an English-education newspaper in 2011 under the line <em>change the mother and you change the world</em>, and ran the first Mentor Conference in 2012 — high-school and university students meeting mentors, on the premise that real education is contact rather than memorisation.</dd>
+        </div>
+      </dl>
+<figure class="band"><img src="img/app-wisemom.jpg" alt="Wisemom" loading="lazy" /><figcaption>Wisemom, the education paper I founded in 2011. The line on the masthead was <em>change the mother and you change the world</em> — the parents were always half the audience.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ LETTERS ============ -->
+  <section id="letters">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">04 · 1996</p>
+        <h2 class="col">The thing I did as a student that AI still cannot do for you.</h2>
+      </div>
+      <div class="letters">
+        <p class="big">As an undergraduate I wrote letters to ten thousand political and business leaders around the world. More than three hundred of them wrote back.</p>
+        <div class="namelist">
+          Warren Buffett, in his own hand<br/>
+          The Director of the Central Intelligence Agency<br/>
+          Jack Welch · the chairmen of Kodak, Coca-Cola, Ford, Matsushita and Mitsubishi<br/>
+          Yehudi Menuhin · Senator Edward Kennedy<br/>
+          Six successive presidents of Harvard<br/>
+          Margaret Thatcher's office, declining an audience — in writing
+        </div>
+        <p>The same year I travelled to China, Japan, Singapore, Hong Kong, Malaysia and Thailand to meet students at Peking University, the University of Tokyo and the National University of Singapore — the people I assumed would be running Asia thirty years later. I later wrote a book about it, <em>Write to Ten Thousand People</em>.</p>
+        <p style="color:var(--ink)">I tell students this story because a language model can draft ten thousand letters in an afternoon, and that is exactly the point. What could not be automated then and cannot be automated now is being the person who actually sends them, and who is still standing there when three hundred replies arrive.</p>
+      </div>
+      <figure class="band"><img src="img/founder-manhwa.jpg" alt="Book cover" loading="lazy" style="max-width:300px" />
+      <figcaption><em>I Got Into Harvard Reading Comics</em> — the first book, published in 2000. The comic strip it grew out of, <em>Harvard Man</em>, ran in the Dong-A Ilbo.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ BROADCAST ============ -->
+  <section id="broadcast">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">05 · Broadcast</p>
+        <h2 class="col">On air.</h2>
+      </div>
+      <div class="videos">
+        <div class="vid">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/WL6M1ZloXMs" title="Sebasi talk" loading="lazy" allowfullscreen></iframe></div>
+          <p class="cap"><span class="ch2">CBS &middot; Sebasi</span><b>Fifteen Minutes to Change the World</b>Korea's largest public talk platform.</p>
+        </div>
+        <div class="vid">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/KAjngDQk7Gk" title="UNAI roundtable" loading="lazy" allowfullscreen></iframe></div>
+          <p class="cap"><span class="ch2">EBS &middot; United Nations</span><b>Host, UNAI roundtable</b>With Secretary-General Ban Ki-moon and UN ambassadors.</p>
+        </div>
+        <div class="vid">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/ntV0d9CsEEQ" title="KBS Morning Plaza" loading="lazy" allowfullscreen></iframe></div>
+          <p class="cap"><span class="ch2">KBS &middot; Morning Plaza</span><b>Three appearances</b>2000, 2001 and 2012.</p>
+        </div>
+        <div class="vid">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/0BR2hOl96jc" title="CTS Young Eagles 300" loading="lazy" allowfullscreen></iframe></div>
+          <p class="cap"><span class="ch2">CTS</span><b>Young Eagles 300</b>Talk to an audience of young people.</p>
+        </div>
+      </div>
+
+      <div class="tv" style="margin-top:28px">
+        <div><span class="ch">EBS &middot; Docuprime</span><span>A Report on Teenage Suicide</span><span class="pg">Documentary</span></div>
+        <div><span class="ch">KBS &middot; 9 O'Clock News</span><span>Featured, 2000</span><span class="pg">News</span></div>
+        <div><span class="ch">MBC</span><span>Kent Kim's Harvard Study Strategy &mdash; 20 episodes, 2009</span><span class="pg">Series</span></div>
+        <div><span class="ch">JTBC &middot; SBS &middot; EBS</span><span>Powerful Story Show &middot; National DJ Search, silver prize 2012 &middot; Parent Mentor 2010</span><span class="pg">Appearances</span></div>
+      </div>
+      <p class="reg-note">I also produced and hosted my own interview series, <em>Kent Kim's Show</em>, with guests including the actor Lee Soon-jae, the boxer Hong Soo-hwan, and Hyun Jin-young, Korea's first hip-hop artist.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAKING ============ -->
+  <section id="making">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">06 · Also</p>
+        <h2 class="col">Books, songs, and a hip-hop record made with a boy who tried to end his life.</h2>
+      </div>
+      <dl>
+        <div class="pair">
+          <dt>Books</dt>
+          <dd>23 published.
+            <div class="books">
+              I Got Into Harvard Reading Comics<br/>
+              The Harvard Way to a Successful Life<br/>
+              Early Study Abroad at the Ivy League<br/>
+              English Special Forces: Vocaforce 1–2<br/>
+              A Letter to Koreans: Too Early to Stop<br/>
+              The Secret of Top Marks 1–2<br/>
+              The Science of Winning in One Line<br/>
+              Write to Ten Thousand People<br/>
+              I Can Get Into Harvard Too 1–2<br/>
+              Shameless Harvard Economics<br/>
+              Veritas<br/>
+              Studying Abroad, the Harvard Way<br/>
+              Harvard Time Management: Time Block
+            </div>
+            <small>Serialised the comic strip <em>Harvard Man</em> in the Dong-A Ilbo.</small>
+            <figure class="covers">
+              <div class="cover-row">
+                <img src="img/founder-timeblock.jpg" alt="Time Block" loading="lazy" />
+                <img src="img/founder-horror.jpg" alt="Book cover" loading="lazy" />
+                <img src="img/cover-01.jpg" alt="Cover" loading="lazy" />
+                <img src="img/cover-02.jpg" alt="Cover" loading="lazy" />
+                <img src="img/cover-03.jpg" alt="Cover" loading="lazy" />
+                <img src="img/cover-04.jpg" alt="Cover" loading="lazy" />
+              </div>
+              <figcaption>A few of them. The writing and the games come out of the same habit — finish the thing, then put it where people can find it.</figcaption>
+            </figure></dd>
+        </div>
+        <div class="pair">
+          <dt>Music</dt>
+          <dd>500 songs written; 407 released through distribution.
+            <small>Started learning to compose in 2012 at the age of forty.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>Wangtta Arirang</dt>
+          <dd>Grand prize, Gugak Broadcasting. Recorded in Korean, English and Japanese, and performed some 300 times.
+            <small>Made with Song Ki-hwan, a student who was bullied at Seoul Global High School and jumped from the sixth floor. He survived. We performed it together — four times live at a professional baseball stadium, and in schools and churches across the country ever since.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>Now</dt>
+          <dd>Chairman, Plato School (2023) · Founder, Deother — a game studio (2022) · Chairman, International Brain Sports Association (2022) · Policy member, Korean Senior Citizens Association.
+            <small>Previously chief of Hope Go, which builds schools and villages in South Sudan, and overseas publicity chief for the Dokdo Love Society.</small></dd>
+        </div>
+        <div class="pair">
+          <dt>Exhibited</dt>
+          <dd>CES Las Vegas 2023 · Tokyo Game Show 2022 · gamescom Germany 2022 · gamescom asia × Thailand Game Show 2025, Korea Pavilion.
+            <small>Ran the first and second Meta-NFT Korea conferences in 2022 — 2,000 and 5,000 attendees.</small></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ REGISTER ============ -->
+  <section id="register">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">07 · The register</p>
+        <h2 class="col">Thirty-eight things, and where to open each one.</h2>
+        <p class="col" style="color:var(--muted)">Built between March and August 2026. Nothing here is a mockup or a case study — every row is a live address or public source. A green dot means it is running right now.</p>
+      </div>
+
+      <figure class="band" style="margin-top:0;margin-bottom:38px">
+        <img src="img/game-art.jpg" alt="Fighting Nations key art" loading="lazy" />
+        <figcaption>Key art from Fighting Nations, one of the ten games below. Everything in this register has an address you can open.</figcaption>
+      </figure>
+
+      <div class="filters" id="filters"></div>
+      <div class="register" id="register"></div>
+      <p class="reg-note">Adult-rated titles from the studio's catalogue are not listed here. Two further projects are omitted pending verification. The count on this page is what I can stand behind in front of a room of students.</p>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION ============ -->
+  <section id="recognition">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">08 · Recognition</p>
+        <h2 class="col">Judged by other people.</h2>
+      </div>
+      <div class="awards">
+        <div class="award">
+          <span class="yr">2026</span>
+          <span class="what"><strong>Top prize</strong> — Incheon International Airport AI-PORT idea competition
+            <small>AIDA, an AI service that guides stranded passengers in their own language. Led to a formal agreement with the airport in June 2026.</small></span>
+        </div>
+        <div class="award">
+          <span class="yr">2026</span>
+          <span class="what"><strong>Excellence prize</strong> — official cheer song, 107th National Sports Festival &amp; 46th National Para Games, Jeju
+            <small>Awarded by the Governor of Jeju Special Self-Governing Province.</small></span>
+        </div>
+        <div class="award">
+          <span class="yr">2025</span>
+          <span class="what"><strong>Encouragement prize</strong> — YTN Seoul Tower short-form competition</span>
+        </div>
+        <div class="award">
+          <span class="yr">2025</span>
+          <span class="what"><strong>Korea Pavilion exhibitor</strong> — gamescom asia × Thailand Game Show, Bangkok
+            <small>Selected for the Korean joint pavilion; signed a cooperation MOU with Thai publisher Debuz at the show.</small></span>
+        </div>
+        <div class="award">
+          <span class="yr">2025</span>
+          <span class="what"><strong>Invited exhibitor</strong> — Global Game Challenge 2025, Chung-Ang University
+            <small>Selected for the outstanding indie game showcase, hosted by the Korea Game Society.</small></span>
+        </div>
+      </div>
+
+      <div class="duo">
+        <figure>
+          <img src="img/iia-01.jpg" alt="Signing ceremony at Incheon International Airport" loading="lazy" />
+          <figcaption>The agreement signing at Incheon International Airport, 24 June 2026, following the AI-PORT competition.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/jeju-award-01.jpg" alt="Award certificate from Jeju Province" loading="lazy" />
+          <figcaption>Excellence prize for the official cheer song of the 107th National Sports Festival, awarded by the Governor of Jeju.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING ============ -->
+  <section id="booking" class="booking">
+    <div class="wrap sec-pad">
+      <div class="sec-head">
+        <p class="eyebrow">09 · Invite</p>
+        <h2 class="col">Bring a session to your school.</h2>
+      </div>
+      <div class="col stack">
+        <p>Write with your school, city, the audience you have in mind, and roughly when. I'll reply with what the session would look like for that group.</p>
+        <p style="color:var(--muted)"><strong style="color:var(--ink)">On cost.</strong> There is no speaking fee for school sessions. I'm based in Seoul and travel in the region regularly. Where several schools in one city would like a session in the same week, I ask that they share travel and local accommodation between them; for a single school on its own, local accommodation alone is fine. Happy to work with whatever your budget allows.</p>
+        <figure class="band" style="margin-top:8px;margin-bottom:30px">
+          <img src="img/ggc-03.jpg" alt="A student playing" loading="lazy" />
+          <figcaption>The end of a session looks like this — somebody using the thing that did not exist an hour ago.</figcaption>
+        </figure>
+
+        <div class="contact" id="contact">
+          <noscript><p class="fallback">Enable JavaScript to see the contact address, or write to Kent through Deother at deother.vercel.app.</p></noscript>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <div class="fr">
+      <span>Kent Kim · Founder, Deother Inc. · Seoul</span>
+      <span><a href="https://deother.vercel.app">deother.vercel.app</a></span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const ITEMS = [
+  // ---- Education & learning ----
+  {c:"edu", t:"Plato School", d:"Strategic hub for students preparing for medical school abroad.", u:"https://plato-school.vercel.app", k:"live"},
+  {c:"edu", t:"Joseon Seojae", d:"Research assistant for historical fiction, built on national heritage open data.", u:"https://joseon-seojae.vercel.app", k:"live"},
+  {c:"edu", t:"EduGap AI", d:"Diagnoses regional education gaps from public data and proposes where resources should go.", u:"https://github.com/kentkim0326/EduGap-AI", k:"code"},
+  {c:"edu", t:"Jobara AI", d:"Career-transition roadmaps for people whose work is being displaced.", u:"https://jobaraai.vercel.app", k:"live"},
+  {c:"edu", t:"Brain Sports Omnipo 2027", d:"National selection across 66 mind sports — go, chess, janggi, and others.", u:"https://icoc-omnipo2027.vercel.app", k:"live"},
+
+  // ---- Public-interest AI ----
+  {c:"civic", t:"AIDA", d:"Guides stranded air passengers in their own language during delays. Top prize, Incheon Airport AI-PORT.", u:"https://aida-airport-ai.vercel.app", k:"live"},
+  {c:"civic", t:"Suhae Alrimi", d:"Flood-risk map for a city, reported and maintained by the residents themselves.", u:"https://soohae-alarm.vercel.app", k:"live"},
+  {c:"civic", t:"ENERCARE AI", d:"Care service for households in energy poverty.", u:"https://enercare-ai.vercel.app", k:"live"},
+  {c:"civic", t:"MediEdge", d:"On-device X-ray analysis — the model runs on the machine, not the cloud.", u:"https://mediedge-ai.vercel.app", k:"live"},
+  {c:"civic", t:"Seongnam Commercial Vitality Dashboard", d:"Reads the health of a city's small businesses from public data.", u:"https://seongnam-dashboard.vercel.app", k:"live"},
+  {c:"civic", t:"Cheonan AI Campus Hub", d:"Submitted to the Cheonan city policy ideas competition.", u:"https://chonan-ai-hub.vercel.app", k:"live"},
+  {c:"civic", t:"Yeongju Care", d:"Caseload dashboard for social workers running elderly care visits.", u:"https://youngju-care.vercel.app", k:"live"},
+  {c:"civic", t:"Yeoboya", d:"An AI companion for older people living alone.", u:"https://yeoboya-ai.vercel.app", k:"live"},
+  {c:"civic", t:"CareMatch", d:"Matches Korean and Japanese elderly care needs with young cross-cultural workers.", u:"https://carematch2026.vercel.app", k:"live"},
+  {c:"civic", t:"Seoul Wander", d:"Travel planner for visitors with no Korean, on Seoul's open data. Five languages.", u:"https://seoul-wander-ai.vercel.app", k:"live"},
+  {c:"civic", t:"NORI", d:"Finds what is worth seeing in Gyeonggi Province, away from the obvious.", u:"https://nori-two.vercel.app", k:"live"},
+  {c:"civic", t:"Pet-cation in Wando", d:"Workations on an island for young people who won't leave their dog behind.", u:"https://wando-pet.vercel.app", k:"live"},
+  {c:"civic", t:"EMC", d:"Live world map of EV chargers, with fault reporting by the drivers who find them.", u:"https://emc-website-theta.vercel.app", k:"live"},
+  {c:"civic", t:"PetMate", d:"Neighbourhood matching for vets, pet hotels, dog walkers and hosts.", u:"https://pet-sandy-eight.vercel.app", k:"live"},
+  {c:"civic", t:"KryptoPay", d:"Where to change money in Seoul, and which places take crypto.", u:"https://krypto-pay-psi.vercel.app", k:"live"},
+
+  // ---- Games ----
+  {c:"game", t:"Fighting Nations", d:"3D bare-handed martial arts fighting game. Unreal Engine 5.8, C++.", u:"https://deother.itch.io/fighting-nations", k:"live"},
+  {c:"game", t:"Wall Street: 234 Years", d:"Browser game that teaches how markets work. Free, no install.", u:"https://wall-street-phi.vercel.app", k:"live"},
+  {c:"game", t:"Miliverse", d:"Territory strategy played on the real world map, with real weather in the fight.", u:"https://miliverse-ten.vercel.app", k:"live"},
+  {c:"game", t:"Kingdom Wars", d:"Turn-based conquest of the moon, 49 sectors, in the browser.", u:"https://kingdom-wars-puce.vercel.app", k:"live"},
+  {c:"game", t:"Kingdom Wars Online", d:"An MMORPG in which AI players enter through the same door as humans.", u:"https://deother.vercel.app/kwonline.html", k:"live"},
+  {c:"game", t:"Jang Bogo", d:"Ninth-century maritime trade simulation, from the novel's alternate history.", u:"https://jangbogo-nine.vercel.app", k:"live"},
+  {c:"game", t:"Time Wars", d:"Sixteen warriors from across history, no guns, one arena.", u:"https://deother.vercel.app/timewars.html", k:"live"},
+  {c:"game", t:"Soomba", d:"Escape across the rooftops of a Joseon palace, chased by sound.", u:"https://deother.vercel.app/soomba.html", k:"live"},
+  {c:"game", t:"SnakeMon", d:"Casual arcade.", u:"https://snake-king.vercel.app", k:"live"},
+  {c:"game", t:"KimchiMon", d:"Casual arcade.", u:"https://kimchi-mon.vercel.app", k:"live"},
+
+  // ---- Platforms ----
+  {c:"platform", t:"Vinus", d:"Subscription platform for creators, translating their work into 20 languages.", u:"https://vinus-black.vercel.app", k:"live"},
+  {c:"platform", t:"Amble Exchange", d:"Token exchange on Base.", u:"https://amble-pi.vercel.app", k:"live"},
+  {c:"platform", t:"Ninjat", d:"Messenger where every message deletes itself, and nobody has a name.", u:"https://ninjat.vercel.app", k:"live"},
+  {c:"platform", t:"IEOC", d:"Esports ladder from the local PC room to a world final.", u:"https://ieoc.vercel.app", k:"live"},
+  {c:"platform", t:"OmniSwap", d:"Exchange for the brain sports ecosystem.", u:"https://brain-sports-omnipo.vercel.app", k:"live"},
+
+  // ---- Sites & archive ----
+  {c:"site", t:"Deother", d:"The studio, in ten languages.", u:"https://deother.vercel.app", k:"live"},
+  {c:"site", t:"Haenah-Kent Gallery Archive", d:"The 1990–2002 gallery at 568 Broadway, SoHo, and Gwanhun-dong, Seoul. An archive, not a shop.", u:"https://haena-kent.vercel.app", k:"live"},
+  {c:"site", t:"Kent Kim — painter", d:"The paintings, and the 133 Places project.", u:"https://github.com/kentkim0326/kentkim", k:"code"}
+];
+
+const CATS = [
+  {id:"all", label:"All"},
+  {id:"edu", label:"Education"},
+  {id:"civic", label:"Public interest"},
+  {id:"game", label:"Games"},
+  {id:"platform", label:"Platforms"},
+  {id:"site", label:"Sites"}
+];
+
+const reg = document.getElementById("register");
+const filters = document.getElementById("filters");
+
+ITEMS.forEach((it, i) => {
+  const a = document.createElement("a");
+  a.className = "row";
+  a.href = it.u;
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.dataset.cat = it.c;
+  a.innerHTML =
+    '<span class="idx">' + String(i + 1).padStart(2, "0") + '</span>' +
+    '<span class="title"></span>' +
+    '<span class="desc"></span>' +
+    '<span class="tag"><span class="dot ' + (it.k === "code" ? "code" : "") + '"></span>' +
+      (it.k === "code" ? "Source" : "Live") + '</span>';
+  a.querySelector(".title").textContent = it.t;
+  a.querySelector(".desc").textContent = it.d;
+  reg.appendChild(a);
+});
+
+CATS.forEach((c, i) => {
+  const b = document.createElement("button");
+  b.className = "filter";
+  b.type = "button";
+  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  const n = c.id === "all" ? ITEMS.length : ITEMS.filter(x => x.c === c.id).length;
+  b.innerHTML = c.label + '<span class="n">' + n + '</span>';
+  b.addEventListener("click", () => {
+    filters.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    reg.querySelectorAll(".row").forEach(r => {
+      r.hidden = !(c.id === "all" || r.dataset.cat === c.id);
+    });
+  });
+  filters.appendChild(b);
+});
+
+// contact — the address is assembled at runtime so it is not sitting in the
+// page source for address-harvesting crawlers to read.
+(function () {
+  const box = document.getElementById("contact");
+  if (!box) return;
+  const user = ["kent", "kim"].join("");
+  const host = ["gmail", "com"].join(".");
+  const addr = user + String.fromCharCode(64) + host;
+  const subject = encodeURIComponent("Speaking invitation \u2014 [your school]");
+
+  const a = document.createElement("a");
+  a.className = "addr";
+  a.href = "mailto:" + addr + "?subject=" + subject;
+  a.textContent = addr;
+
+  const btn = document.createElement("button");
+  btn.className = "copy";
+  btn.type = "button";
+  btn.textContent = "Copy address";
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(addr);
+      btn.textContent = "Copied";
+      btn.dataset.done = "1";
+      setTimeout(() => { btn.textContent = "Copy address"; delete btn.dataset.done; }, 2000);
+    } catch (e) {
+      btn.textContent = "Select it above";
+      setTimeout(() => { btn.textContent = "Copy address"; }, 2000);
+    }
+  });
+
+  box.append(a, btn);
+})();
+
+// count-up
+(function () {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fmt = n => n.toLocaleString("en-US");
+
+  function run(el, target, formatted) {
+    if (!el) return;
+    if (reduce) { el.textContent = formatted ? fmt(target) : target; return; }
+    let n = 0;
+    const tick = () => {
+      n += Math.max(1, Math.round((target - n) / 7));
+      if (n >= target) { el.textContent = formatted ? fmt(target) : target; return; }
+      el.textContent = formatted ? fmt(n) : n;
+      setTimeout(tick, 34);
+    };
+    setTimeout(tick, 200);
+  }
+
+  run(document.getElementById("count1"), 1000000, true);
+  run(document.getElementById("count2"), ITEMS.length, false);
+})();
+</script>
+</body>
+</html>
