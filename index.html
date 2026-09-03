@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kent Kim — The Register</title>
+<title>Kent Kim</title>
 <meta name="description" content="Kent Kim taught more than a million students across Korea between 1996 and 2016, ran an Ivy League admissions academy in New York and Seoul, and shipped thirty-eight products in the last six months. He speaks at international schools about what students can still prove when AI can produce the work." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -313,7 +313,6 @@ footer a{color:var(--muted)}
       <a href="#schools">For schools</a>
       <a href="#background">Teaching</a>
       <a href="#letters">1996</a>
-      <a href="#register">The register</a>
       <a href="#booking">Invite</a>
     </nav>
   </header>
@@ -338,12 +337,11 @@ footer a{color:var(--muted)}
 
       <div class="hero-body">
         <p>I'm Kent Kim. I graduated in economics from Harvard in 1997, ran an Ivy League admissions academy in New York and Seoul, and spoke to more than a million students, parents and teachers across Korea between 1996 and 2016.</p>
-        <p style="color:var(--ink)">Then I spent six months building software at volume with AI, and came out of it convinced that <strong>what I used to teach students to optimise for is being repriced in front of us.</strong> That is what I come to schools to talk about — and everything on this page is something you can open and check.</p>
+        <p style="color:var(--ink)">Then I spent six months building software at volume with AI, and came out of it convinced that <strong>what I used to teach students to optimise for is being repriced in front of us.</strong> That is what I come to schools to talk about.</p>
       </div>
 
       <div class="actions">
         <a class="btn btn-solid" href="#booking">Invite Kent to your school</a>
-        <a class="btn btn-ghost" href="#register">See all thirty-eight</a>
       </div>
 
       <figure class="band">
@@ -630,28 +628,11 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
-  <!-- ============ REGISTER ============ -->
-  <section id="register">
-    <div class="wrap sec-pad">
-      <div class="sec-head">
-        <p class="eyebrow">07 · The register</p>
-        <h2 class="col">Thirty-eight things, and where to open each one.</h2>
-        <p class="col" style="color:var(--muted)">Built between March and August 2026. Nothing here is a mockup or a case study — every row is a live address or public source. A green dot means it is running right now.</p>
-      </div>
-
-      
-
-      <div class="filters" id="filters"></div>
-      <div class="register" id="register"></div>
-      <p class="reg-note">Adult-rated titles from the studio's catalogue are not listed here. Two further projects are omitted pending verification. The count on this page is what I can stand behind in front of a room of students.</p>
-    </div>
-  </section>
-
   <!-- ============ RECOGNITION ============ -->
   <section id="recognition">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">08 · Recognition</p>
+        <p class="eyebrow">07 · Recognition</p>
         <h2 class="col">Judged by other people.</h2>
       </div>
       <div class="awards">
@@ -698,7 +679,7 @@ footer a{color:var(--muted)}
   <section id="booking" class="booking">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">09 · Invite</p>
+        <p class="eyebrow">08 · Invite</p>
         <h2 class="col">Bring a session to your school.</h2>
       </div>
       <div class="col stack">
@@ -709,9 +690,6 @@ footer a{color:var(--muted)}
           <figcaption>세션의 끝은 이렇게 생겼다 — 한 시간 전에 없던 것을 누군가 쓰고 있는 장면.</figcaption>
         </figure>
 
-        <div class="contact" id="contact">
-          <noscript><p class="fallback">Enable JavaScript to see the contact address, or write to Kent through Deother at deother.vercel.app.</p></noscript>
-        </div>
       </div>
     </div>
   </section>
@@ -727,138 +705,6 @@ footer a{color:var(--muted)}
 </div>
 
 <script>
-const ITEMS = [
-  // ---- Education & learning ----
-  {c:"edu", t:"Plato School", d:"Strategic hub for students preparing for medical school abroad.", u:"https://plato-school.vercel.app", k:"live"},
-  {c:"edu", t:"Joseon Seojae", d:"Research assistant for historical fiction, built on national heritage open data.", u:"https://joseon-seojae.vercel.app", k:"live"},
-  {c:"edu", t:"EduGap AI", d:"Diagnoses regional education gaps from public data and proposes where resources should go.", u:"https://github.com/kentkim0326/EduGap-AI", k:"code"},
-  {c:"edu", t:"Jobara AI", d:"Career-transition roadmaps for people whose work is being displaced.", u:"https://jobaraai.vercel.app", k:"live"},
-  {c:"edu", t:"Brain Sports Omnipo 2027", d:"National selection across 66 mind sports — go, chess, janggi, and others.", u:"https://icoc-omnipo2027.vercel.app", k:"live"},
-
-  // ---- Public-interest AI ----
-  {c:"civic", t:"AIDA", d:"Guides stranded air passengers in their own language during delays. Top prize, Incheon Airport AI-PORT.", u:"https://aida-airport-ai.vercel.app", k:"live"},
-  {c:"civic", t:"Suhae Alrimi", d:"Flood-risk map for a city, reported and maintained by the residents themselves.", u:"https://soohae-alarm.vercel.app", k:"live"},
-  {c:"civic", t:"ENERCARE AI", d:"Care service for households in energy poverty.", u:"https://enercare-ai.vercel.app", k:"live"},
-  {c:"civic", t:"MediEdge", d:"On-device X-ray analysis — the model runs on the machine, not the cloud.", u:"https://mediedge-ai.vercel.app", k:"live"},
-  {c:"civic", t:"Seongnam Commercial Vitality Dashboard", d:"Reads the health of a city's small businesses from public data.", u:"https://seongnam-dashboard.vercel.app", k:"live"},
-  {c:"civic", t:"Cheonan AI Campus Hub", d:"Submitted to the Cheonan city policy ideas competition.", u:"https://chonan-ai-hub.vercel.app", k:"live"},
-  {c:"civic", t:"Yeongju Care", d:"Caseload dashboard for social workers running elderly care visits.", u:"https://youngju-care.vercel.app", k:"live"},
-  {c:"civic", t:"Yeoboya", d:"An AI companion for older people living alone.", u:"https://yeoboya-ai.vercel.app", k:"live"},
-  {c:"civic", t:"CareMatch", d:"Matches Korean and Japanese elderly care needs with young cross-cultural workers.", u:"https://carematch2026.vercel.app", k:"live"},
-  {c:"civic", t:"Seoul Wander", d:"Travel planner for visitors with no Korean, on Seoul's open data. Five languages.", u:"https://seoul-wander-ai.vercel.app", k:"live"},
-  {c:"civic", t:"NORI", d:"Finds what is worth seeing in Gyeonggi Province, away from the obvious.", u:"https://nori-two.vercel.app", k:"live"},
-  {c:"civic", t:"Pet-cation in Wando", d:"Workations on an island for young people who won't leave their dog behind.", u:"https://wando-pet.vercel.app", k:"live"},
-  {c:"civic", t:"EMC", d:"Live world map of EV chargers, with fault reporting by the drivers who find them.", u:"https://emc-website-theta.vercel.app", k:"live"},
-  {c:"civic", t:"PetMate", d:"Neighbourhood matching for vets, pet hotels, dog walkers and hosts.", u:"https://pet-sandy-eight.vercel.app", k:"live"},
-  {c:"civic", t:"KryptoPay", d:"Where to change money in Seoul, and which places take crypto.", u:"https://krypto-pay-psi.vercel.app", k:"live"},
-
-  // ---- Games ----
-  {c:"game", t:"Fighting Nations", d:"3D bare-handed martial arts fighting game. Unreal Engine 5.8, C++.", u:"https://deother.itch.io/fighting-nations", k:"live"},
-  {c:"game", t:"Wall Street: 234 Years", d:"Browser game that teaches how markets work. Free, no install.", u:"https://wall-street-phi.vercel.app", k:"live"},
-  {c:"game", t:"Miliverse", d:"Territory strategy played on the real world map, with real weather in the fight.", u:"https://miliverse-ten.vercel.app", k:"live"},
-  {c:"game", t:"Kingdom Wars", d:"Turn-based conquest of the moon, 49 sectors, in the browser.", u:"https://kingdom-wars-puce.vercel.app", k:"live"},
-  {c:"game", t:"Kingdom Wars Online", d:"An MMORPG in which AI players enter through the same door as humans.", u:"https://deother.vercel.app/kwonline.html", k:"live"},
-  {c:"game", t:"Jang Bogo", d:"Ninth-century maritime trade simulation, from the novel's alternate history.", u:"https://jangbogo-nine.vercel.app", k:"live"},
-  {c:"game", t:"Time Wars", d:"Sixteen warriors from across history, no guns, one arena.", u:"https://deother.vercel.app/timewars.html", k:"live"},
-  {c:"game", t:"Soomba", d:"Escape across the rooftops of a Joseon palace, chased by sound.", u:"https://deother.vercel.app/soomba.html", k:"live"},
-  {c:"game", t:"SnakeMon", d:"Casual arcade.", u:"https://snake-king.vercel.app", k:"live"},
-  {c:"game", t:"KimchiMon", d:"Casual arcade.", u:"https://kimchi-mon.vercel.app", k:"live"},
-
-  // ---- Platforms ----
-  {c:"platform", t:"Vinus", d:"Subscription platform for creators, translating their work into 20 languages.", u:"https://vinus-black.vercel.app", k:"live"},
-  {c:"platform", t:"Amble Exchange", d:"Token exchange on Base.", u:"https://amble-pi.vercel.app", k:"live"},
-  {c:"platform", t:"Ninjat", d:"Messenger where every message deletes itself, and nobody has a name.", u:"https://ninjat.vercel.app", k:"live"},
-  {c:"platform", t:"IEOC", d:"Esports ladder from the local PC room to a world final.", u:"https://ieoc.vercel.app", k:"live"},
-  {c:"platform", t:"OmniSwap", d:"Exchange for the brain sports ecosystem.", u:"https://brain-sports-omnipo.vercel.app", k:"live"},
-
-  // ---- Sites & archive ----
-  {c:"site", t:"Deother", d:"The studio, in ten languages.", u:"https://deother.vercel.app", k:"live"},
-  {c:"site", t:"Haenah-Kent Gallery Archive", d:"The 1990–2002 gallery at 568 Broadway, SoHo, and Gwanhun-dong, Seoul. An archive, not a shop.", u:"https://haena-kent.vercel.app", k:"live"},
-  {c:"site", t:"Kent Kim — painter", d:"The paintings, and the 133 Places project.", u:"https://github.com/kentkim0326/kentkim", k:"code"}
-];
-
-const CATS = [
-  {id:"all", label:"All"},
-  {id:"edu", label:"Education"},
-  {id:"civic", label:"Public interest"},
-  {id:"game", label:"Games"},
-  {id:"platform", label:"Platforms"},
-  {id:"site", label:"Sites"}
-];
-
-const reg = document.getElementById("register");
-const filters = document.getElementById("filters");
-
-ITEMS.forEach((it, i) => {
-  const a = document.createElement("a");
-  a.className = "row";
-  a.href = it.u;
-  a.target = "_blank";
-  a.rel = "noopener";
-  a.dataset.cat = it.c;
-  a.innerHTML =
-    '<span class="idx">' + String(i + 1).padStart(2, "0") + '</span>' +
-    '<span class="title"></span>' +
-    '<span class="desc"></span>' +
-    '<span class="tag"><span class="dot ' + (it.k === "code" ? "code" : "") + '"></span>' +
-      (it.k === "code" ? "Source" : "Live") + '</span>';
-  a.querySelector(".title").textContent = it.t;
-  a.querySelector(".desc").textContent = it.d;
-  reg.appendChild(a);
-});
-
-CATS.forEach((c, i) => {
-  const b = document.createElement("button");
-  b.className = "filter";
-  b.type = "button";
-  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-  const n = c.id === "all" ? ITEMS.length : ITEMS.filter(x => x.c === c.id).length;
-  b.innerHTML = c.label + '<span class="n">' + n + '</span>';
-  b.addEventListener("click", () => {
-    filters.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", "false"));
-    b.setAttribute("aria-pressed", "true");
-    reg.querySelectorAll(".row").forEach(r => {
-      r.hidden = !(c.id === "all" || r.dataset.cat === c.id);
-    });
-  });
-  filters.appendChild(b);
-});
-
-// contact — the address is assembled at runtime so it is not sitting in the
-// page source for address-harvesting crawlers to read.
-(function () {
-  const box = document.getElementById("contact");
-  if (!box) return;
-  const user = ["kent", "kim"].join("");
-  const host = ["gmail", "com"].join(".");
-  const addr = user + String.fromCharCode(64) + host;
-  const subject = encodeURIComponent("Speaking invitation \u2014 [your school]");
-
-  const a = document.createElement("a");
-  a.className = "addr";
-  a.href = "mailto:" + addr + "?subject=" + subject;
-  a.textContent = addr;
-
-  const btn = document.createElement("button");
-  btn.className = "copy";
-  btn.type = "button";
-  btn.textContent = "Copy address";
-  btn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(addr);
-      btn.textContent = "Copied";
-      btn.dataset.done = "1";
-      setTimeout(() => { btn.textContent = "Copy address"; delete btn.dataset.done; }, 2000);
-    } catch (e) {
-      btn.textContent = "Select it above";
-      setTimeout(() => { btn.textContent = "Copy address"; }, 2000);
-    }
-  });
-
-  box.append(a, btn);
-})();
-
-// count-up
 (function () {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fmt = n => n.toLocaleString("en-US");
@@ -877,7 +723,7 @@ CATS.forEach((c, i) => {
   }
 
   run(document.getElementById("count1"), 1000000, true);
-  run(document.getElementById("count2"), ITEMS.length, false);
+  run(document.getElementById("count2"), 38, false);
 })();
 </script>
 </body>
