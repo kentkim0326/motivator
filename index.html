@@ -718,7 +718,7 @@ footer a{color:var(--muted)}
           <figcaption>세션의 끝은 이렇게 생겼다 — 한 시간 전에 없던 것을 누군가 쓰고 있는 장면.</figcaption>
         </figure>
 
-        <form class="form" id="enquiry" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="form" id="enquiry" action="https://formspree.io/f/xaeyjgoa" method="POST">
           <div class="row2">
             <div class="field">
               <label for="f-name">Your name</label>
@@ -795,7 +795,6 @@ footer a{color:var(--muted)}
   const msg = document.getElementById("form-msg");
   const btn = form.querySelector(".send");
   form.addEventListener("submit", async (e) => {
-    if (form.action.indexOf("YOUR_FORM_ID") !== -1) return;
     e.preventDefault();
     btn.disabled = true;
     msg.dataset.state = "";
