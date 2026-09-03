@@ -276,6 +276,34 @@ dl{margin:0}
 .award .what{flex:1;min-width:16rem}
 .award .what small{display:block;color:var(--muted);font-size:var(--step--1);margin-top:4px}
 
+/* ---------- enquiry form ---------- */
+.form{margin-top:26px;display:grid;gap:16px;max-width:56ch}
+.form .row2{display:grid;gap:16px}
+@media (min-width:640px){.form .row2{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);
+}
+.field input,.field textarea{
+  font:inherit;font-size:var(--step--1);color:var(--ink);
+  background:var(--paper);border:1px solid var(--hair-strong);
+  padding:11px 13px;border-radius:0;width:100%;
+}
+.field textarea{min-height:120px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--pine)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .send{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:var(--step--1);
+  letter-spacing:0.08em;text-transform:uppercase;padding:13px 26px;
+  border:1px solid var(--pine);background:var(--pine);color:var(--paper);
+  cursor:pointer;justify-self:start;transition:opacity .14s ease;
+}
+.form .send:hover{opacity:.85}
+.form .send[disabled]{opacity:.5;cursor:default}
+.form-msg{font-size:var(--step--1);color:var(--muted);line-height:1.6}
+.form-msg[data-state="ok"]{color:var(--pine)}
+
 /* ---------- booking ---------- */
 .booking{background:var(--surface)}
 .booking .col{max-width:58ch}
@@ -690,6 +718,41 @@ footer a{color:var(--muted)}
           <figcaption>세션의 끝은 이렇게 생겼다 — 한 시간 전에 없던 것을 누군가 쓰고 있는 장면.</figcaption>
         </figure>
 
+        <form class="form" id="enquiry" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="row2">
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="f-school">School or organisation</label>
+              <input id="f-school" name="school" type="text" required />
+            </div>
+            <div class="field">
+              <label for="f-city">City and country</label>
+              <input id="f-city" name="city" type="text" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-when">Audience and roughly when</label>
+            <textarea id="f-when" name="message" required placeholder="Year groups, how many students, and the window you have in mind."></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Leave this empty</label>
+            <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" name="_subject" value="Speaking invitation" />
+          <button class="send" type="submit">Send</button>
+          <p class="form-msg" id="form-msg" role="status"></p>
+          <noscript><p class="form-msg">The form works without JavaScript &mdash; you will be taken to a confirmation page after sending.</p></noscript>
+        </form>
+
       </div>
     </div>
   </section>
@@ -725,6 +788,39 @@ footer a{color:var(--muted)}
   run(document.getElementById("count1"), 1000000, true);
   run(document.getElementById("count2"), 38, false);
 })();
+
+(function () {
+  const form = document.getElementById("enquiry");
+  if (!form) return;
+  const msg = document.getElementById("form-msg");
+  const btn = form.querySelector(".send");
+  form.addEventListener("submit", async (e) => {
+    if (form.action.indexOf("YOUR_FORM_ID") !== -1) return;
+    e.preventDefault();
+    btn.disabled = true;
+    msg.dataset.state = "";
+    msg.textContent = "Sending\u2026";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        form.reset();
+        msg.dataset.state = "ok";
+        msg.textContent = "Thank you \u2014 the message is with Kent. He replies to every school enquiry.";
+      } else {
+        msg.textContent = "That did not go through. Please try again in a moment.";
+        btn.disabled = false;
+      }
+    } catch (err) {
+      msg.textContent = "That did not go through. Please try again in a moment.";
+      btn.disabled = false;
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
