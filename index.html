@@ -114,8 +114,16 @@ section{border-top:1px solid var(--hair)}
 .stat{display:flex;flex-direction:column;gap:12px;min-width:0}
 .count{font-size:clamp(2.9rem,8.5vw,5.4rem);line-height:0.95}
 #count1::after{content:"+";color:var(--pine-soft)}
-.count.small{font-size:clamp(3.4rem,10vw,6.2rem)}
+.count.small{font-size:clamp(2.4rem,7vw,4.6rem)}
 .stat .eyebrow{border-top:1px solid var(--hair-strong);padding-top:10px}
+/* apps and games are one fact, so they share a column and a single date label
+   instead of wrapping onto separate rows at phone width */
+.pair-counts{display:flex;align-items:baseline;gap:clamp(16px,4vw,28px)}
+.pair-counts span{display:flex;align-items:baseline;gap:7px}
+.pair-counts i{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-style:normal;
+  font-size:var(--step--1);color:var(--muted);
+}
 .letters{
   margin-top:8px;border-left:2px solid var(--pine);padding:4px 0 4px clamp(18px,3vw,30px);
   display:flex;flex-direction:column;gap:16px;
@@ -393,8 +401,11 @@ html[lang="ko"] .form label{letter-spacing:0.01em;text-transform:none}
           <p class="eyebrow" data-i18n="k006">People taught · 1996–2016</p>
         </div>
         <div class="stat">
-          <div class="count small" id="count2" aria-hidden="true">0</div>
-          <p class="eyebrow" data-i18n="k007">Shipped · Mar–Aug 2026</p>
+          <div class="pair-counts">
+            <span><b class="count small" id="count2" aria-hidden="true">0</b><i data-i18n="k007b">apps</i></span>
+            <span><b class="count small" id="count3" aria-hidden="true">0</b><i data-i18n="k007c">games</i></span>
+          </div>
+          <p class="eyebrow" data-i18n="k007">Built with AI · Mar–Aug 2026</p>
         </div>
       </div>
 
@@ -829,7 +840,8 @@ html[lang="ko"] .form label{letter-spacing:0.01em;text-transform:none}
   }
 
   run(document.getElementById("count1"), 1000000, true);
-  run(document.getElementById("count2"), 60, false);
+  run(document.getElementById("count2"), 50, false);
+  run(document.getElementById("count3"), 10, false);
 })();
 
 (function () {
@@ -872,7 +884,9 @@ html[lang="ko"] .form label{letter-spacing:0.01em;text-transform:none}
   "k004": "1996",
   "k005": "초청",
   "k006": "강연으로 만난 사람 · 1996–2016",
-  "k007": "만든 것 · 2026년 3–8월",
+  "k007": "AI로 만든 것 · 2026년 3–8월",
+  "k007b": "앱",
+  "k007c": "게임",
   "k008": "20년을 학생들 동기부여를 했습니다. 지난 6개월 동안 <em>AI로 앱 50개, 게임 10개</em>를 만들었습니다.",
   "k009": "켄트 김입니다. 1997년 하버드 경제학과를 졸업하고 뉴욕과 서울에서 아이비리그 입시 학원을 운영했으며, 1996년부터 2016년까지 전국에서 100만 명이 넘는 학생·학부모·교사를 만났습니다.",
   "k010": "그다음 6개월을 AI로 소프트웨어를 대량으로 만드는 데 썼습니다. 그리고 <strong>제가 학생들에게 최적화하라고 가르쳐 온 것의 값이 지금 다시 매겨지고 있다</strong>는 확신을 얻었습니다. 학교에 가서 하는 이야기가 바로 그것입니다.",
