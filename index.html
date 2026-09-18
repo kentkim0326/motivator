@@ -330,18 +330,55 @@ footer a{color:var(--muted)}
 
 .fade{opacity:0;transform:translateY(6px);animation:rise .5s ease forwards}
 @keyframes rise{to{opacity:1;transform:none}}
+.lang{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:var(--step--1);
+  letter-spacing:0.04em;
+  color:var(--muted);
+  background:none;
+  border:1px solid var(--hair-strong);
+  border-radius:999px;
+  padding:3px 11px;
+  cursor:pointer;
+  line-height:1.5;
+}
+.lang:hover{color:var(--ink);border-color:var(--ink)}
+html[lang="ko"] body{
+  word-break:keep-all;
+  line-height:1.74;
+}
+/* ch units are sized on "0" and run about half a Hangul glyph, so Korean
+   measures are set in em instead — otherwise every line breaks twice as early. */
+html[lang="ko"] .col{max-width:32em}
+html[lang="ko"] .hero h1{max-width:17em;line-height:1.3}
+html[lang="ko"] .hero-body{max-width:32em}
+/* the uppercase tracking on the mono labels is set for Latin letters; on
+   Hangul it just pushes the syllables apart, so it is dialled back. */
+html[lang="ko"] .eyebrow,
+html[lang="ko"] nav a,
+html[lang="ko"] .name,
+html[lang="ko"] dt,
+html[lang="ko"] .who,
+html[lang="ko"] .ch,
+html[lang="ko"] .ch2,
+html[lang="ko"] .pg,
+html[lang="ko"] .yr,
+html[lang="ko"] .btn,
+html[lang="ko"] .send,
+html[lang="ko"] .form label{letter-spacing:0.01em;text-transform:none}
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header class="masthead">
-    <div class="name">Kent Kim <span style="color:var(--muted);font-size:var(--step--1)">· Seoul</span></div>
+    <div class="name" data-i18n="k001">Kent Kim <span style="color:var(--muted);font-size:var(--step--1)">· Seoul</span></div>
     <nav>
-      <a href="#schools">For schools</a>
-      <a href="#background">Teaching</a>
-      <a href="#letters">1996</a>
-      <a href="#booking">Invite</a>
+      <a href="#schools" data-i18n="k002">For schools</a>
+      <a href="#background" data-i18n="k003">Teaching</a>
+      <a href="#letters" data-i18n="k004">1996</a>
+      <a href="#booking" data-i18n="k005">Invite</a>
+      <button type="button" id="lang" class="lang" aria-label="Switch language">한국어</button>
     </nav>
   </header>
 </div>
@@ -353,28 +390,28 @@ footer a{color:var(--muted)}
       <div class="count-row">
         <div class="stat">
           <div class="count" id="count1" aria-hidden="true">0</div>
-          <p class="eyebrow">People taught · 1996–2016</p>
+          <p class="eyebrow" data-i18n="k006">People taught · 1996–2016</p>
         </div>
         <div class="stat">
           <div class="count small" id="count2" aria-hidden="true">0</div>
-          <p class="eyebrow">Shipped · Mar–Aug 2026</p>
+          <p class="eyebrow" data-i18n="k007">Shipped · Mar–Aug 2026</p>
         </div>
       </div>
 
-      <h1>For twenty years I taught students how to win the old game. In the last six months I built thirty-eight things to find out what the <em>new one asks for</em>.</h1>
+      <h1 data-i18n="k008">For twenty years I taught students how to win the old game. In the last six months I built thirty-eight things to find out what the <em>new one asks for</em>.</h1>
 
       <div class="hero-body">
-        <p>I'm Kent Kim. I graduated in economics from Harvard in 1997, ran an Ivy League admissions academy in New York and Seoul, and spoke to more than a million students, parents and teachers across Korea between 1996 and 2016.</p>
-        <p style="color:var(--ink)">Then I spent six months building software at volume with AI, and came out of it convinced that <strong>what I used to teach students to optimise for is being repriced in front of us.</strong> That is what I come to schools to talk about.</p>
+        <p data-i18n="k009">I'm Kent Kim. I graduated in economics from Harvard in 1997, ran an Ivy League admissions academy in New York and Seoul, and spoke to more than a million students, parents and teachers across Korea between 1996 and 2016.</p>
+        <p style="color:var(--ink)" data-i18n="k010">Then I spent six months building software at volume with AI, and came out of it convinced that <strong>what I used to teach students to optimise for is being repriced in front of us.</strong> That is what I come to schools to talk about.</p>
       </div>
 
       <div class="actions">
-        <a class="btn btn-solid" href="#booking">Invite Kent to your school</a>
+        <a class="btn btn-solid" href="#booking" data-i18n="k011">Invite Kent to your school</a>
       </div>
 
       <figure class="band">
         <img src="img/dgr-02.jpg" alt="Kent Kim speaking" loading="lazy" />
-        <figcaption>2026년 8월, 동그라미재단 AI 컨퍼런스 데이 발표.</figcaption>
+        <figcaption data-i18n="k012">Speaking at the Dongground Foundation AI Conference Day, August 2026.</figcaption>
       </figure>
     </div>
   </div>
@@ -383,42 +420,42 @@ footer a{color:var(--muted)}
   <section id="schools">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">01 · What I'd bring</p>
-        <h2 class="col">A session that ends with something that did not exist when it started.</h2>
+        <p class="eyebrow" data-i18n="k013">01 · What I'd bring</p>
+        <h2 class="col" data-i18n="k014">A session that ends with something that did not exist when it started.</h2>
       </div>
 
       <div class="col stack" style="color:var(--muted);margin-bottom:44px">
-        <p>The argument about whether students should use AI is finished. The harder question is what a student can now demonstrate that AI cannot simply hand them — and increasingly the answer is the finished, shipped thing itself. Something a stranger can open on their own phone and form a judgement about in ten seconds.</p>
-        <p style="color:var(--ink)">I am not guessing at this from outside. I ran an Ivy League admissions academy in New York and then in Seoul for eight years, taught SAT reading and writing, and wrote books about getting in. I am not here to sell any of that. I am here because I think <strong>the thing it optimised for is being repriced</strong>, and I would rather say so to a room of students than pretend otherwise.</p>
+        <p data-i18n="k015">The argument about whether students should use AI is finished. The harder question is what a student can now demonstrate that AI cannot simply hand them — and increasingly the answer is the finished, shipped thing itself. Something a stranger can open on their own phone and form a judgement about in ten seconds.</p>
+        <p style="color:var(--ink)" data-i18n="k016">I am not guessing at this from outside. I ran an Ivy League admissions academy in New York and then in Seoul for eight years, taught SAT reading and writing, and wrote books about getting in. I am not here to sell any of that. I am here because I think <strong>the thing it optimised for is being repriced</strong>, and I would rather say so to a room of students than pretend otherwise.</p>
       </div>
 
       <div class="cards">
         <div class="card">
-          <p class="who">Students · 60–90 min</p>
-          <h3>Build one thing, today</h3>
-          <p>An idea from the room becomes a deployed application before the session ends. Students scan the QR code and use it on their own phones. Then we talk about what that means for the next four years.</p>
+          <p class="who" data-i18n="k017">Students · 60–90 min</p>
+          <h3 data-i18n="k018">Build one thing, today</h3>
+          <p data-i18n="k019">An idea from the room becomes a deployed application before the session ends. Students scan the QR code and use it on their own phones. Then we talk about what that means for the next four years.</p>
         </div>
         <div class="card">
-          <p class="who">Teachers · 60 min</p>
-          <h3>Running it without a CS department</h3>
-          <p>The actual workflow, the three places it reliably breaks, how to assess work when the code is no longer evidence of effort, and how a history department ships a source-analysis tool as easily as maths ships a visualiser.</p>
+          <p class="who" data-i18n="k020">Teachers · 60 min</p>
+          <h3 data-i18n="k021">Running it without a CS department</h3>
+          <p data-i18n="k022">The actual workflow, the three places it reliably breaks, how to assess work when the code is no longer evidence of effort, and how a history department ships a source-analysis tool as easily as maths ships a visualiser.</p>
         </div>
         <div class="card">
-          <p class="who">Parents · 60 min</p>
-          <h3>What changed, and what didn't</h3>
-          <p>An honest evening session: which parts of university preparation AI has genuinely altered, which parts are unchanged, and what it looks like when a teenager builds something real instead of collecting activities.</p>
+          <p class="who" data-i18n="k023">Parents · 60 min</p>
+          <h3 data-i18n="k024">What changed, and what didn't</h3>
+          <p data-i18n="k025">An honest evening session: which parts of university preparation AI has genuinely altered, which parts are unchanged, and what it looks like when a teenager builds something real instead of collecting activities.</p>
         </div>
       </div>
 
       
 
       <div class="demo">
-        <p class="eyebrow">The part that isn't a slide deck</p>
-        <h3>The live build</h3>
-        <p>I take a problem from the audience — something real at that school — and build a working application on stage. It deploys before the session ends, to a public address, with a QR code on screen. People open it, use it, and break it while I'm still standing there.</p>
-        <p>Then we take apart what just happened. That is the session. The talking is the debrief, not the event.</p>
+        <p class="eyebrow" data-i18n="k026">The part that isn't a slide deck</p>
+        <h3 data-i18n="k027">The live build</h3>
+        <p data-i18n="k028">I take a problem from the audience — something real at that school — and build a working application on stage. It deploys before the session ends, to a public address, with a QR code on screen. People open it, use it, and break it while I'm still standing there.</p>
+        <p data-i18n="k029">Then we take apart what just happened. That is the session. The talking is the debrief, not the event.</p>
       </div>
-<figure class="band"><img src="img/dgr-03.jpg" alt="Kent Kim speaking" loading="lazy" /><figcaption>발표 중. 세션은 말로 끝나지 않고, 그 자리에서 만든 것을 열어 보는 것으로 끝난다.</figcaption></figure>
+<figure class="band"><img src="img/dgr-03.jpg" alt="Kent Kim speaking" loading="lazy" /><figcaption data-i18n="k030">Mid-session. It does not end with talking — it ends with opening the thing we just built.</figcaption></figure>
     </div>
   </section>
 
@@ -426,42 +463,47 @@ footer a{color:var(--muted)}
   <section id="background">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">02 · Teaching</p>
-        <h2 class="col">Twenty years in front of rooms.</h2>
-        <p class="col" style="color:var(--muted)">Between 1996 and 2016 I spoke to more than a million students, parents, teachers and employees across Korea — universities, high schools, companies, city governments, a juvenile detention centre and an orphanage.</p>
+        <p class="eyebrow" data-i18n="k031">02 · Teaching</p>
+        <h2 class="col" data-i18n="k032">Twenty years in front of rooms.</h2>
+        <p class="col" style="color:var(--muted)" data-i18n="k033">Between 1996 and 2016 I spoke to more than a million students, parents, teachers and employees across Korea — universities, high schools, companies, city governments, a juvenile detention centre and an orphanage.</p>
       </div>
 
       <dl>
         <div class="pair">
-          <dt>Schools &amp; universities</dt>
-          <dd>Daejeon University freshman orientation, 2,500 students. Sogang, Inha, Hanyang, Kookmin, Sungkyunkwan, Handong, Andong, Kyungnam, Jeonju, Chugye, Halla, Mokwon.
+          <dt data-i18n="k034">Schools &amp; universities</dt>
+          <dd data-i18n="k035">Daejeon University freshman orientation, 2,500 students. Sogang, Inha, Hanyang, Kookmin, Sungkyunkwan, Handong, Andong, Kyungnam, Jeonju, Chugye, Halla, Mokwon.
             <small>Seoul Global High School (450) · Gyeonggi Academy of Foreign Languages · Seongnam Foreign Language High School · Cheonan Bugil High School (500) · Ilsan Daehwa High School (400) · Jirisan High School, two days residential.</small></dd>
         </div>
         <div class="pair">
-          <dt>Parents</dt>
-          <dd>Three consecutive 1,000-parent lectures in one week — northern Seoul, southern Seoul, Busan (2005). Time Education Holdings, 1,200 parents (2008).</dd>
+          <dt data-i18n="k036">Parents</dt>
+          <dd data-i18n="k037">Three consecutive 1,000-parent lectures in one week — northern Seoul, southern Seoul, Busan (2005). Time Education Holdings, 1,200 parents (2008).</dd>
         </div>
         <div class="pair">
-          <dt>In the United States</dt>
-          <dd>Blair Academy, New Jersey (2003) · Northern Valley High School, New Jersey (2004) · KASCON at the University of Washington (2005) · lecture series in Denver, Flushing, Queens and New Jersey.</dd>
+          <dt data-i18n="k038">In the United States</dt>
+          <dd data-i18n="k039">Blair Academy, New Jersey (2003) · Northern Valley High School, New Jersey (2004) · KASCON at the University of Washington (2005) · lecture series in Denver, Flushing, Queens and New Jersey.</dd>
         </div>
         <div class="pair">
-          <dt>Companies &amp; government</dt>
-          <dd>LG Electronics · Samsung Heavy Industries · SK Chemicals · JVM · Maeil Business CEO design programme · Songpa, Seongdong, Yangcheon and Deogyang district offices · Chungcheong provincial government · the Korea Coast Guard Academy.</dd>
+          <dt data-i18n="k040">Companies &amp; government</dt>
+          <dd data-i18n="k041">LG Electronics · Samsung Heavy Industries · SK Chemicals · JVM · Maeil Business CEO design programme · Songpa, Seongdong, Yangcheon and Deogyang district offices · Chungcheong provincial government · the Korea Coast Guard Academy.</dd>
         </div>
         <div class="pair">
-          <dt>Where it is least comfortable</dt>
-          <dd>A juvenile detention centre in Gyeonggi (200 young people, 2007). Namsan orphanage. Children in Jeonju heading households alone.
+          <dt data-i18n="k042">Where it is least comfortable</dt>
+          <dd data-i18n="k043">A juvenile detention centre in Gyeonggi (200 young people, 2007). Namsan orphanage. Children in Jeonju heading households alone.
             <small>These are the rooms that taught me what a talk is actually for.</small></dd>
         </div>
         <div class="pair">
-          <dt>On television</dt>
-          <dd>MBC — <em>Kent Kim's Harvard Study Strategy</em>, a 20-episode series (2009).
+          <dt data-i18n="k044">Churches</dt>
+          <dd data-i18n="k045">I lost my mother to gallbladder cancer in 2002, at fifty-five. I started speaking in churches that year and have not stopped — Sarang Church and Onnuri Church in Seoul, then Korean-American congregations across the United States: Full Gospel and Onnuri Irvine in Los Angeles, Siloam and Bayside in New York, Cloister in New Jersey, a Presbyterian church in Denver.
+            <small>Broadcast as testimony on CBS <em>Make Me New</em> in December 2010, and on CTS <em>Young Eagles 300</em>.</small></dd>
+        </div>
+        <div class="pair">
+          <dt data-i18n="k046">On television</dt>
+          <dd data-i18n="k047">MBC — <em>Kent Kim's Harvard Study Strategy</em>, a 20-episode series (2009).
             <small>Also a corporate course on time and network management for Korea HRD Broadcasting.</small></dd>
         </div>
         <div class="pair">
-          <dt>Volunteering</dt>
-          <dd>Founded Bongsa Special Forces in 2010 with eight people. It now has 2,200.</dd>
+          <dt data-i18n="k048">Volunteering</dt>
+          <dd data-i18n="k049">Founded Bongsa Special Forces in 2010 with eight people. It now has 2,200.</dd>
         </div>
       </dl>
 
@@ -469,7 +511,7 @@ footer a{color:var(--muted)}
         
         <figure>
           <img src="img/founder-sindonga.jpg" alt="Magazine feature" loading="lazy" />
-          <figcaption>Featured in Shindonga magazine. Korean press has followed the teaching work since 2000.</figcaption>
+          <figcaption data-i18n="k050">Featured in Shindonga magazine. Korean press has followed the teaching work since 2000.</figcaption>
         </figure>
       </div>
     </div>
@@ -479,46 +521,46 @@ footer a{color:var(--muted)}
   <section id="admissions">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">03 · Admissions</p>
-        <h2 class="col">I taught the thing I am now asking schools to reconsider.</h2>
-        <p class="col" style="color:var(--muted)">This matters for how you read everything else on this page. I am not an outsider with an opinion about university admissions. I built a business on it, on two continents, for eight years.</p>
+        <p class="eyebrow" data-i18n="k051">03 · Admissions</p>
+        <h2 class="col" data-i18n="k052">I taught the thing I am now asking schools to reconsider.</h2>
+        <p class="col" style="color:var(--muted)" data-i18n="k053">This matters for how you read everything else on this page. I am not an outsider with an opinion about university admissions. I built a business on it, on two continents, for eight years.</p>
       </div>
 
       <dl>
         <div class="pair">
-          <dt>Ivy Plan · New York</dt>
-          <dd>Founded 2003. SAT preparation for Korean-American students, across three locations in New York and New Jersey through 2005.</dd>
+          <dt data-i18n="k054">Ivy Plan · New York</dt>
+          <dd data-i18n="k055">Founded 2003. SAT preparation for Korean-American students, across three locations in New York and New Jersey through 2005.</dd>
         </div>
         <div class="pair">
-          <dt>Ivy Plan · Seoul</dt>
-          <dd>Founded 2008 in Apgujeong with a fellow Harvard alumnus. I taught SAT reading and writing myself, 2009–2010.</dd>
+          <dt data-i18n="k056">Ivy Plan · Seoul</dt>
+          <dd data-i18n="k057">Founded 2008 in Apgujeong with a fellow Harvard alumnus. I taught SAT reading and writing myself, 2009–2010.</dd>
         </div>
         <div class="pair">
-          <dt>Chungdahm Institute</dt>
-          <dd>Director, 2005. National lecture tour across its branches, 2005–2007.</dd>
+          <dt data-i18n="k058">Chungdahm Institute</dt>
+          <dd data-i18n="k059">Director, 2005. National lecture tour across its branches, 2005–2007.</dd>
         </div>
       </dl>
 
       <figure class="band">
         <img src="img/founder-timeblock.jpg" alt="Time Block book cover" loading="lazy" style="max-width:280px" />
-        <figcaption><em>Harvard Time Management: Time Block</em>. Most of what I sold parents for twenty years was a method for spending a teenager's hours well. That question has not gone away — what changed is what the hours should go into.</figcaption>
+        <figcaption data-i18n="k060"><em>Harvard Time Management: Time Block</em>. Most of what I sold parents for twenty years was a method for spending a teenager's hours well. That question has not gone away — what changed is what the hours should go into.</figcaption>
       </figure>
 
       <dl>
         <div class="pair">
-          <dt>Before any of that</dt>
-          <dd>Taught weekend SAT classes at the Korean church in Cambridge, Massachusetts, 1995–96 — while still an undergraduate.</dd>
+          <dt data-i18n="k061">Before any of that</dt>
+          <dd data-i18n="k062">Taught weekend SAT classes at the Korean church in Cambridge, Massachusetts, 1995–96 — while still an undergraduate.</dd>
         </div>
         <div class="pair">
-          <dt>Written on the subject</dt>
-          <dd><em>Early Study Abroad at the Ivy League</em> · <em>I Can Get Into Harvard Too</em>, vols. 1–2 · <em>Studying Abroad, the Harvard Way</em> · <em>Harvard Time Management: Time Block</em>.</dd>
+          <dt data-i18n="k063">Written on the subject</dt>
+          <dd data-i18n="k064"><em>Early Study Abroad at the Ivy League</em> · <em>I Can Get Into Harvard Too</em>, vols. 1–2 · <em>Studying Abroad, the Harvard Way</em> · <em>Harvard Time Management: Time Block</em>.</dd>
         </div>
         <div class="pair">
-          <dt>Wisemom</dt>
-          <dd>Founded an English-education newspaper in 2011 under the line <em>change the mother and you change the world</em>, and ran the first Mentor Conference in 2012 — high-school and university students meeting mentors, on the premise that real education is contact rather than memorisation.</dd>
+          <dt data-i18n="k065">Wisemom</dt>
+          <dd data-i18n="k066">Founded an English-education newspaper in 2011 under the line <em>change the mother and you change the world</em>, and ran the first Mentor Conference in 2012 — high-school and university students meeting mentors, on the premise that real education is contact rather than memorisation.</dd>
         </div>
       </dl>
-<figure class="band"><img src="img/app-wisemom.jpg" alt="Wisemom" loading="lazy" /><figcaption>Wisemom, the education paper I founded in 2011. The line on the masthead was <em>change the mother and you change the world</em> — the parents were always half the audience.</figcaption></figure>
+<figure class="band"><img src="img/app-wisemom.jpg" alt="Wisemom" loading="lazy" /><figcaption data-i18n="k067">Wisemom, the education paper I founded in 2011. The line on the masthead was <em>change the mother and you change the world</em> — the parents were always half the audience.</figcaption></figure>
     </div>
   </section>
 
@@ -526,12 +568,12 @@ footer a{color:var(--muted)}
   <section id="letters">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">04 · 1996</p>
-        <h2 class="col">The thing I did as a student that AI still cannot do for you.</h2>
+        <p class="eyebrow" data-i18n="k068">04 · 1996</p>
+        <h2 class="col" data-i18n="k069">The thing I did as a student that AI still cannot do for you.</h2>
       </div>
       <div class="letters">
-        <p class="big">As an undergraduate I wrote letters to ten thousand political and business leaders around the world. More than three hundred of them wrote back.</p>
-        <div class="namelist">
+        <p class="big" data-i18n="k070">As an undergraduate I wrote letters to ten thousand political and business leaders around the world. More than three hundred of them wrote back.</p>
+        <div class="namelist" data-i18n="k071">
           Warren Buffett, in his own hand<br/>
           The Director of the Central Intelligence Agency<br/>
           Jack Welch · the chairmen of Kodak, Coca-Cola, Ford, Matsushita and Mitsubishi<br/>
@@ -539,11 +581,11 @@ footer a{color:var(--muted)}
           Six successive presidents of Harvard<br/>
           Margaret Thatcher's office, declining an audience — in writing
         </div>
-        <p>The same year I travelled to China, Japan, Singapore, Hong Kong, Malaysia and Thailand to meet students at Peking University, the University of Tokyo and the National University of Singapore — the people I assumed would be running Asia thirty years later. I later wrote a book about it, <em>Write to Ten Thousand People</em>.</p>
-        <p style="color:var(--ink)">I tell students this story because a language model can draft ten thousand letters in an afternoon, and that is exactly the point. What could not be automated then and cannot be automated now is being the person who actually sends them, and who is still standing there when three hundred replies arrive.</p>
+        <p data-i18n="k072">The same year I travelled to China, Japan, Singapore, Hong Kong, Malaysia and Thailand to meet students at Peking University, the University of Tokyo and the National University of Singapore — the people I assumed would be running Asia thirty years later. I later wrote a book about it, <em>Write to Ten Thousand People</em>.</p>
+        <p style="color:var(--ink)" data-i18n="k073">I tell students this story because a language model can draft ten thousand letters in an afternoon, and that is exactly the point. What could not be automated then and cannot be automated now is being the person who actually sends them, and who is still standing there when three hundred replies arrive.</p>
       </div>
       <figure class="band"><img src="img/founder-manhwa.jpg" alt="Book cover" loading="lazy" style="max-width:300px" />
-      <figcaption><em>I Got Into Harvard Reading Comics</em> — the first book, published in 2000. The comic strip it grew out of, <em>Harvard Man</em>, ran in the Dong-A Ilbo.</figcaption></figure>
+      <figcaption data-i18n="k074"><em>I Got Into Harvard Reading Comics</em> — the first book, published in 2000. The comic strip it grew out of, <em>Harvard Man</em>, ran in the Dong-A Ilbo.</figcaption></figure>
     </div>
   </section>
 
@@ -551,45 +593,46 @@ footer a{color:var(--muted)}
   <section id="broadcast">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">05 · Broadcast</p>
-        <h2 class="col">On air.</h2>
+        <p class="eyebrow" data-i18n="k075">05 · Broadcast</p>
+        <h2 class="col" data-i18n="k076">On air.</h2>
       </div>
       <div class="videos">
         <div class="vid">
           <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/WL6M1ZloXMs" title="Sebasi talk" loading="lazy" allowfullscreen></iframe></div>
-          <p class="cap"><span class="ch2">CBS &middot; Sebasi</span><b>Fifteen Minutes to Change the World</b>Korea's largest public talk platform.</p>
+          <p class="cap" data-i18n="k077"><span class="ch2">CBS &middot; Sebasi</span><b>Fifteen Minutes to Change the World</b>Korea's largest public talk platform.</p>
         </div>
         <div class="vid">
           <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/KAjngDQk7Gk" title="UNAI roundtable" loading="lazy" allowfullscreen></iframe></div>
-          <p class="cap"><span class="ch2">EBS &middot; United Nations</span><b>Host, UNAI roundtable</b>With Secretary-General Ban Ki-moon and UN ambassadors.</p>
+          <p class="cap" data-i18n="k078"><span class="ch2">EBS &middot; United Nations</span><b>Host, UNAI roundtable</b>With Secretary-General Ban Ki-moon and UN ambassadors.</p>
         </div>
         <div class="vid">
           <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/ntV0d9CsEEQ" title="KBS Morning Plaza" loading="lazy" allowfullscreen></iframe></div>
-          <p class="cap"><span class="ch2">KBS &middot; Morning Plaza</span><b>Three appearances</b>2000, 2001 and 2012.</p>
+          <p class="cap" data-i18n="k079"><span class="ch2">KBS &middot; Morning Plaza</span><b>Three appearances</b>2000, 2001 and 2012.</p>
         </div>
         <div class="vid">
           <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/0BR2hOl96jc" title="CTS Young Eagles 300" loading="lazy" allowfullscreen></iframe></div>
-          <p class="cap"><span class="ch2">CTS</span><b>Young Eagles 300</b>Talk to an audience of young people.</p>
+          <p class="cap" data-i18n="k080"><span class="ch2">CTS</span><b>Young Eagles 300</b>Talk to an audience of young people.</p>
         </div>
       </div>
 
       <div class="tv" style="margin-top:28px">
-        <div><span class="ch">EBS &middot; Docuprime</span><span>A Report on Teenage Suicide</span><span class="pg">Documentary</span></div>
-        <div><span class="ch">KBS &middot; 9 O'Clock News</span><span>Featured, 2000</span><span class="pg">News</span></div>
-        <div><span class="ch">MBC</span><span>Kent Kim's Harvard Study Strategy &mdash; 20 episodes, 2009</span><span class="pg">Series</span></div>
-        <div><span class="ch">JTBC &middot; SBS &middot; EBS</span><span>Powerful Story Show &middot; National DJ Search, silver prize 2012 &middot; Parent Mentor 2010</span><span class="pg">Appearances</span></div>
+        <div><span class="ch" data-i18n="k081">EBS &middot; Docuprime</span><span data-i18n="k082">A Report on Teenage Suicide</span><span class="pg" data-i18n="k083">Documentary</span></div>
+        <div><span class="ch" data-i18n="k084">KBS &middot; 9 O'Clock News</span><span data-i18n="k085">Featured, 2000</span><span class="pg" data-i18n="k086">News</span></div>
+        <div><span class="ch" data-i18n="k087">MBC</span><span data-i18n="k088">Kent Kim's Harvard Study Strategy &mdash; 20 episodes, 2009</span><span class="pg" data-i18n="k089">Series</span></div>
+        <div><span class="ch" data-i18n="k090">CBS &middot; Make Me New</span><span data-i18n="k091">Testimony interview, 1 December 2010</span><span class="pg" data-i18n="k092">Interview</span></div>
+        <div><span class="ch" data-i18n="k093">JTBC &middot; SBS &middot; EBS</span><span data-i18n="k094">Powerful Story Show &middot; National DJ Search, silver prize 2012 &middot; Parent Mentor 2010</span><span class="pg" data-i18n="k095">Appearances</span></div>
       </div>
-      <p class="eyebrow" style="margin-top:34px">In print</p>
+      <p class="eyebrow" style="margin-top:34px" data-i18n="k096">In print</p>
       <div class="tv">
-        <a href="http://www.headlinejeju.co.kr/news/articleView.html?idxno=400772" target="_blank" rel="noopener"><span class="ch">Headline Jeju</span><span>JDC invites Harvard-educated mentor Kent Kim</span><span class="pg">Article</span></a>
-        <a href="https://www.jeju.go.kr/news/bodo/organ.htm?act=view&amp;seq=1203150" target="_blank" rel="noopener"><span class="ch">Jeju Province</span><span>JDC Global Academy, 11th lecture &mdash; Kent Kim</span><span class="pg">Press release</span></a>
-        <a href="http://www.jsinews.com/news/articleView.html?idxno=6784" target="_blank" rel="noopener"><span class="ch">Jangseong News</span><span>Wisemom Education Media&rsquo;s Kent Kim invited to speak</span><span class="pg">Article</span></a>
-        <a href="http://www.inewspeople.co.kr/news/articleView.html?idxno=4994" target="_blank" rel="noopener"><span class="ch">Sisa News People</span><span>&ldquo;If it isn&rsquo;t fun, how could you work?&rdquo;</span><span class="pg">Interview</span></a>
-        <a href="https://www.facebook.com/sebasi15/videos/425156587515710/" target="_blank" rel="noopener"><span class="ch">Sebasi</span><span>Mini interview &mdash; Kent Kim, publisher of the education paper Wisemom</span><span class="pg">Interview</span></a>
+        <a href="http://www.headlinejeju.co.kr/news/articleView.html?idxno=400772" target="_blank" rel="noopener"><span class="ch" data-i18n="k097">Headline Jeju</span><span data-i18n="k098">JDC invites Harvard-educated mentor Kent Kim</span><span class="pg" data-i18n="k099">Article</span></a>
+        <a href="https://www.jeju.go.kr/news/bodo/organ.htm?act=view&amp;seq=1203150" target="_blank" rel="noopener"><span class="ch" data-i18n="k100">Jeju Province</span><span data-i18n="k101">JDC Global Academy, 11th lecture &mdash; Kent Kim</span><span class="pg" data-i18n="k102">Press release</span></a>
+        <a href="http://www.jsinews.com/news/articleView.html?idxno=6784" target="_blank" rel="noopener"><span class="ch" data-i18n="k103">Jangseong News</span><span data-i18n="k104">Wisemom Education Media&rsquo;s Kent Kim invited to speak</span><span class="pg" data-i18n="k105">Article</span></a>
+        <a href="http://www.inewspeople.co.kr/news/articleView.html?idxno=4994" target="_blank" rel="noopener"><span class="ch" data-i18n="k106">Sisa News People</span><span data-i18n="k107">&ldquo;If it isn&rsquo;t fun, how could you work?&rdquo;</span><span class="pg" data-i18n="k108">Interview</span></a>
+        <a href="https://www.facebook.com/sebasi15/videos/425156587515710/" target="_blank" rel="noopener"><span class="ch" data-i18n="k109">Sebasi</span><span data-i18n="k110">Mini interview &mdash; Kent Kim, publisher of the education paper Wisemom</span><span class="pg" data-i18n="k111">Interview</span></a>
       </div>
-      <p class="reg-note">The Korean press has followed the teaching work since 2000. The talk in Jeju was titled <em>If you are not crazy while young, you are crazy</em> &mdash; the account of a divorce, poverty, and Harvard.</p>
+      <p class="reg-note" data-i18n="k112">The Korean press has followed the teaching work since 2000. The talk in Jeju was titled <em>If you are not crazy while young, you are crazy</em> &mdash; the account of a divorce, poverty, and Harvard.</p>
 
-      <p class="reg-note">I also produced and hosted my own interview series, <em>Kent Kim's Show</em>, with guests including the actor Lee Soon-jae, the boxer Hong Soo-hwan, and Hyun Jin-young, Korea's first hip-hop artist.</p>
+      <p class="reg-note" data-i18n="k113">I also produced and hosted my own interview series, <em>Kent Kim's Show</em>, with guests including the actor Lee Soon-jae, the boxer Hong Soo-hwan, and Hyun Jin-young, Korea's first hip-hop artist.</p>
     </div>
   </section>
 
@@ -597,13 +640,13 @@ footer a{color:var(--muted)}
   <section id="making">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">06 · Also</p>
-        <h2 class="col">Books, songs, and a hip-hop record made with a boy who tried to end his life.</h2>
+        <p class="eyebrow" data-i18n="k114">06 · Also</p>
+        <h2 class="col" data-i18n="k115">Books, songs, and a hip-hop record made with a boy who tried to end his life.</h2>
       </div>
       <dl>
         <div class="pair">
-          <dt>Books</dt>
-          <dd>23 published.
+          <dt data-i18n="k116">Books</dt>
+          <dd data-i18n="k117">23 published.
             <div class="books">
               I Got Into Harvard Reading Comics<br/>
               The Harvard Way to a Successful Life<br/>
@@ -633,23 +676,23 @@ footer a{color:var(--muted)}
             </figure></dd>
         </div>
         <div class="pair">
-          <dt>Music</dt>
-          <dd>500 songs written; 407 released through distribution.
+          <dt data-i18n="k118">Music</dt>
+          <dd data-i18n="k119">500 songs written; 407 released through distribution.
             <small>Started learning to compose in 2012 at the age of forty.</small></dd>
         </div>
         <div class="pair">
-          <dt>Wangtta Arirang</dt>
-          <dd>Grand prize, Gugak Broadcasting. Recorded in Korean, English and Japanese, and performed some 300 times.
+          <dt data-i18n="k120">Wangtta Arirang</dt>
+          <dd data-i18n="k121">Grand prize, Gugak Broadcasting. Recorded in Korean, English and Japanese, and performed some 300 times.
             <small>Made with Song Ki-hwan, a student who was bullied at Seoul Global High School and jumped from the sixth floor. He survived. We performed it together — four times live at a professional baseball stadium, and in schools and churches across the country ever since.</small></dd>
         </div>
         <div class="pair">
-          <dt>Now</dt>
-          <dd>Chairman, Plato School (2023) · Founder, Deother — a game studio (2022) · Chairman, International Brain Sports Association (2022) · Policy member, Korean Senior Citizens Association.
+          <dt data-i18n="k122">Now</dt>
+          <dd data-i18n="k123">Chairman, Plato School (2023) · Founder, Deother — a game studio (2022) · Chairman, International Brain Sports Association (2022) · Policy member, Korean Senior Citizens Association.
             <small>Previously chief of Hope Go, which builds schools and villages in South Sudan, and overseas publicity chief for the Dokdo Love Society.</small></dd>
         </div>
         <div class="pair">
-          <dt>Exhibited</dt>
-          <dd>CES Las Vegas 2023 · Tokyo Game Show 2022 · gamescom Germany 2022 · gamescom asia × Thailand Game Show 2025, Korea Pavilion.
+          <dt data-i18n="k124">Exhibited</dt>
+          <dd data-i18n="k125">CES Las Vegas 2023 · Tokyo Game Show 2022 · gamescom Germany 2022 · gamescom asia × Thailand Game Show 2025, Korea Pavilion.
             <small>Ran the first and second Meta-NFT Korea conferences in 2022 — 2,000 and 5,000 attendees.</small></dd>
         </div>
       </dl>
@@ -660,32 +703,32 @@ footer a{color:var(--muted)}
   <section id="recognition">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">07 · Recognition</p>
-        <h2 class="col">Judged by other people.</h2>
+        <p class="eyebrow" data-i18n="k126">07 · Recognition</p>
+        <h2 class="col" data-i18n="k127">Judged by other people.</h2>
       </div>
       <div class="awards">
         <div class="award">
-          <span class="yr">2026</span>
-          <span class="what"><strong>Top prize</strong> — Incheon International Airport AI-PORT idea competition
+          <span class="yr" data-i18n="k128">2026</span>
+          <span class="what" data-i18n="k129"><strong>Top prize</strong> — Incheon International Airport AI-PORT idea competition
             <small>AIDA, an AI service that guides stranded passengers in their own language. Led to a formal agreement with the airport in June 2026.</small></span>
         </div>
         <div class="award">
-          <span class="yr">2026</span>
-          <span class="what"><strong>Excellence prize</strong> — official cheer song, 107th National Sports Festival &amp; 46th National Para Games, Jeju
+          <span class="yr" data-i18n="k130">2026</span>
+          <span class="what" data-i18n="k131"><strong>Excellence prize</strong> — official cheer song, 107th National Sports Festival &amp; 46th National Para Games, Jeju
             <small>Awarded by the Governor of Jeju Special Self-Governing Province.</small></span>
         </div>
         <div class="award">
-          <span class="yr">2025</span>
-          <span class="what"><strong>Encouragement prize</strong> — YTN Seoul Tower short-form competition</span>
+          <span class="yr" data-i18n="k132">2025</span>
+          <span class="what" data-i18n="k133"><strong>Encouragement prize</strong> — YTN Seoul Tower short-form competition</span>
         </div>
         <div class="award">
-          <span class="yr">2025</span>
-          <span class="what"><strong>Korea Pavilion exhibitor</strong> — gamescom asia × Thailand Game Show, Bangkok
+          <span class="yr" data-i18n="k134">2025</span>
+          <span class="what" data-i18n="k135"><strong>Korea Pavilion exhibitor</strong> — gamescom asia × Thailand Game Show, Bangkok
             <small>Selected for the Korean joint pavilion; signed a cooperation MOU with Thai publisher Debuz at the show.</small></span>
         </div>
         <div class="award">
-          <span class="yr">2025</span>
-          <span class="what"><strong>Invited exhibitor</strong> — Global Game Challenge 2025, Chung-Ang University
+          <span class="yr" data-i18n="k136">2025</span>
+          <span class="what" data-i18n="k137"><strong>Invited exhibitor</strong> — Global Game Challenge 2025, Chung-Ang University
             <small>Selected for the outstanding indie game showcase, hosted by the Korea Game Society.</small></span>
         </div>
       </div>
@@ -693,11 +736,11 @@ footer a{color:var(--muted)}
       <div class="duo">
         <figure>
           <img src="img/iia-01.jpg" alt="Signing ceremony at Incheon International Airport" loading="lazy" />
-          <figcaption>The agreement signing at Incheon International Airport, 24 June 2026, following the AI-PORT competition.</figcaption>
+          <figcaption data-i18n="k138">The agreement signing at Incheon International Airport, 24 June 2026, following the AI-PORT competition.</figcaption>
         </figure>
         <figure>
           <img src="img/jeju-award-01.jpg" alt="Award certificate from Jeju Province" loading="lazy" />
-          <figcaption>Excellence prize for the official cheer song of the 107th National Sports Festival, awarded by the Governor of Jeju.</figcaption>
+          <figcaption data-i18n="k139">Excellence prize for the official cheer song of the 107th National Sports Festival, awarded by the Governor of Jeju.</figcaption>
         </figure>
       </div>
     </div>
@@ -707,50 +750,50 @@ footer a{color:var(--muted)}
   <section id="booking" class="booking">
     <div class="wrap sec-pad">
       <div class="sec-head">
-        <p class="eyebrow">08 · Invite</p>
-        <h2 class="col">Bring a session to your school.</h2>
+        <p class="eyebrow" data-i18n="k140">08 · Invite</p>
+        <h2 class="col" data-i18n="k141">Bring a session to your school.</h2>
       </div>
       <div class="col stack">
-        <p>Write with your school, city, the audience you have in mind, and roughly when. I'll reply with what the session would look like for that group.</p>
-        <p style="color:var(--muted)"><strong style="color:var(--ink)">On cost.</strong> The fee follows your budget &mdash; tell me what the school has set aside and I will work to it. I'm based in Seoul and travel in the region regularly. Where several schools in one city would like a session in the same week, I ask that they share travel and local accommodation between them; for a single school on its own, local accommodation alone is fine. Money should not be the reason a session does not happen.</p>
+        <p data-i18n="k142">Write with your school, city, the audience you have in mind, and roughly when. I'll reply with what the session would look like for that group.</p>
+        <p style="color:var(--muted)" data-i18n="k143"><strong style="color:var(--ink)">On cost.</strong> The fee follows your budget &mdash; tell me what the school has set aside and I will work to it. I'm based in Seoul and travel in the region regularly. Where several schools in one city would like a session in the same week, I ask that they share travel and local accommodation between them; for a single school on its own, local accommodation alone is fine. Money should not be the reason a session does not happen.</p>
         <figure class="band" style="margin-top:8px;margin-bottom:30px">
           <img src="img/dgr-01.jpg" alt="Kent Kim speaking" loading="lazy" />
-          <figcaption>세션의 끝은 이렇게 생겼다 — 한 시간 전에 없던 것을 누군가 쓰고 있는 장면.</figcaption>
+          <figcaption data-i18n="k144">This is what the end of a session looks like — someone using a thing that did not exist an hour earlier.</figcaption>
         </figure>
 
         <form class="form" id="enquiry" action="https://formspree.io/f/xaeyjgoa" method="POST">
           <div class="row2">
             <div class="field">
-              <label for="f-name">Your name</label>
+              <label for="f-name" data-i18n="k145">Your name</label>
               <input id="f-name" name="name" type="text" required autocomplete="name" />
             </div>
             <div class="field">
-              <label for="f-email">Email</label>
+              <label for="f-email" data-i18n="k146">Email</label>
               <input id="f-email" name="email" type="email" required autocomplete="email" />
             </div>
           </div>
           <div class="row2">
             <div class="field">
-              <label for="f-school">School or organisation</label>
+              <label for="f-school" data-i18n="k147">School or organisation</label>
               <input id="f-school" name="school" type="text" required />
             </div>
             <div class="field">
-              <label for="f-city">City and country</label>
+              <label for="f-city" data-i18n="k148">City and country</label>
               <input id="f-city" name="city" type="text" required />
             </div>
           </div>
           <div class="field">
-            <label for="f-when">Audience and roughly when</label>
+            <label for="f-when" data-i18n="k149">Audience and roughly when</label>
             <textarea id="f-when" name="message" required placeholder="Year groups, how many students, and the window you have in mind."></textarea>
           </div>
           <div class="hp" aria-hidden="true">
-            <label for="f-website">Leave this empty</label>
+            <label for="f-website" data-i18n="k150">Leave this empty</label>
             <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
           </div>
           <input type="hidden" name="_subject" value="Speaking invitation" />
-          <button class="send" type="submit">Send</button>
-          <p class="form-msg" id="form-msg" role="status"></p>
-          <noscript><p class="form-msg">The form works without JavaScript &mdash; you will be taken to a confirmation page after sending.</p></noscript>
+          <button class="send" type="submit" data-i18n="k151">Send</button>
+          <p class="form-msg" id="form-msg" role="status" data-i18n="k152"></p>
+          <noscript><p class="form-msg" data-i18n="k153">The form works without JavaScript &mdash; you will be taken to a confirmation page after sending.</p></noscript>
         </form>
 
       </div>
@@ -761,8 +804,8 @@ footer a{color:var(--muted)}
 <div class="wrap">
   <footer>
     <div class="fr">
-      <span>Kent Kim · Founder, Deother Inc. · Seoul</span>
-      <span><a href="https://deother.vercel.app">deother.vercel.app</a></span>
+      <span data-i18n="k154">Kent Kim · Founder, Deother Inc. · Seoul</span>
+      <span data-i18n="k155"><a href="https://deother.vercel.app">deother.vercel.app</a></span>
     </div>
   </footer>
 </div>
@@ -798,7 +841,7 @@ footer a{color:var(--muted)}
     e.preventDefault();
     btn.disabled = true;
     msg.dataset.state = "";
-    msg.textContent = "Sending\u2026";
+    msg.textContent = window.__lang === "ko" ? "보내는 중…" : "Sending…";
     try {
       const res = await fetch(form.action, {
         method: "POST",
@@ -808,18 +851,229 @@ footer a{color:var(--muted)}
       if (res.ok) {
         form.reset();
         msg.dataset.state = "ok";
-        msg.textContent = "Thank you \u2014 the message is with Kent. He replies to every school enquiry.";
+        msg.textContent = window.__lang === "ko" ? "감사합니다 — 전달되었습니다. 학교에서 오는 문의에는 모두 답장드립니다." : "Thank you — the message is with Kent. He replies to every school enquiry.";
       } else {
-        msg.textContent = "That did not go through. Please try again in a moment.";
+        msg.textContent = window.__lang === "ko" ? "전송되지 않았습니다. 잠시 후 다시 시도해 주세요." : "That did not go through. Please try again in a moment.";
         btn.disabled = false;
       }
     } catch (err) {
-      msg.textContent = "That did not go through. Please try again in a moment.";
+      msg.textContent = window.__lang === "ko" ? "전송되지 않았습니다. 잠시 후 다시 시도해 주세요." : "That did not go through. Please try again in a moment.";
       btn.disabled = false;
     }
   });
 })();
 
+/* ---------- language ---------- */
+(function () {
+  const KO = {
+  "k001": "켄트 김 <span style=\"color:var(--muted);font-size:var(--step--1)\">· 서울</span>",
+  "k002": "학교 강연",
+  "k003": "강연",
+  "k004": "1996",
+  "k005": "초청",
+  "k006": "강연으로 만난 사람 · 1996–2016",
+  "k007": "만든 것 · 2026년 3–8월",
+  "k008": "20년 동안 학생들에게 예전 게임에서 이기는 법을 가르쳤습니다. 지난 6개월 동안은 서른여덟 개를 직접 만들며 <em>새 게임이 무엇을 요구하는지</em> 알아봤습니다.",
+  "k009": "켄트 김입니다. 1997년 하버드 경제학과를 졸업하고 뉴욕과 서울에서 아이비리그 입시 학원을 운영했으며, 1996년부터 2016년까지 전국에서 100만 명이 넘는 학생·학부모·교사를 만났습니다.",
+  "k010": "그다음 6개월을 AI로 소프트웨어를 대량으로 만드는 데 썼습니다. 그리고 <strong>제가 학생들에게 최적화하라고 가르쳐 온 것의 값이 지금 다시 매겨지고 있다</strong>는 확신을 얻었습니다. 학교에 가서 하는 이야기가 바로 그것입니다.",
+  "k011": "학교로 초청하기",
+  "k013": "01 · 무엇을 가져가는가",
+  "k014": "시작할 때 없던 것이 끝날 때 하나 생겨 있는 세션.",
+  "k015": "학생이 AI를 써도 되느냐는 논쟁은 끝났습니다. 더 어려운 질문은, AI가 그냥 건네줄 수 없는 것 중에 학생이 지금 무엇을 증명해 보일 수 있느냐입니다. 그 답은 점점 더 완성되어 배포된 결과물 그 자체가 되고 있습니다. 처음 보는 사람이 자기 휴대폰으로 열어서 10초 만에 판단할 수 있는 것 말입니다.",
+  "k016": "바깥에서 추측하는 이야기가 아닙니다. 저는 뉴욕에서, 그다음 서울에서 8년 동안 아이비리그 입시 학원을 운영했고, SAT 리딩과 라이팅을 직접 가르쳤고, 합격에 관한 책을 썼습니다. 그것을 팔려고 온 것이 아닙니다. <strong>그 모든 것이 최적화해 온 대상의 값이 다시 매겨지고 있다</strong>고 생각하기 때문에, 모른 척하기보다 학생들 앞에서 그렇게 말하려고 왔습니다.",
+  "k017": "학생 · 60–90분",
+  "k018": "오늘 하나 만들기",
+  "k019": "객석에서 나온 아이디어가 세션이 끝나기 전에 배포된 애플리케이션이 됩니다. 학생들이 QR 코드를 찍어 자기 휴대폰에서 직접 씁니다. 그다음 그것이 앞으로 4년에 어떤 의미인지 이야기합니다.",
+  "k020": "교사 · 60분",
+  "k021": "전산 담당 없이 굴리는 법",
+  "k022": "실제 작업 흐름, 반드시 깨지는 세 지점, 코드가 더 이상 노력의 증거가 아닐 때 과제를 어떻게 평가할 것인가, 그리고 수학과가 시각화 도구를 내놓는 것만큼 역사과가 사료 분석 도구를 쉽게 내놓는 방법.",
+  "k023": "학부모 · 60분",
+  "k024": "무엇이 변했고 무엇이 그대로인가",
+  "k025": "솔직한 저녁 세션입니다. 대학 입시 준비에서 AI가 실제로 바꿔 놓은 부분은 어디이고, 그대로인 부분은 어디인지. 그리고 아이가 활동 목록을 모으는 대신 진짜로 무언가를 만들어 낼 때 어떤 모습인지.",
+  "k026": "슬라이드가 아닌 부분",
+  "k027": "현장 제작",
+  "k028": "객석에서 문제를 하나 받습니다. 그 학교에서 실제로 겪는 문제여야 합니다. 그리고 무대 위에서 작동하는 애플리케이션을 만듭니다. 세션이 끝나기 전에 공개 주소로 배포되고, 화면에 QR 코드가 뜹니다. 제가 아직 무대에 서 있는 동안 사람들이 그것을 열어 쓰고, 망가뜨려 봅니다.",
+  "k029": "그다음 방금 무슨 일이 있었는지 뜯어봅니다. 그게 세션입니다. 말은 사건이 아니라 사후 정리입니다.",
+  "k031": "02 · 강연",
+  "k032": "20년을 사람들 앞에서.",
+  "k033": "1996년부터 2016년까지 전국에서 100만 명이 넘는 학생·학부모·교사·임직원을 만났습니다. 대학, 고등학교, 기업, 지자체, 그리고 소년원과 보육원이었습니다.",
+  "k034": "학교와 대학",
+  "k035": "대전대학교 신입생 오리엔테이션 2,500명. 서강대·인하대·한양대·국민대·성균관대·한동대·안동대·경남대·전주대·추계예술대·한라대·목원대.\n<small>서울국제고 450명 · 경기외고 · 성남외고 · 천안북일고 500명 · 일산 대화고 400명 · 지리산고 1박 2일.</small>",
+  "k036": "학부모",
+  "k037": "한 주에 1,000명 규모 학부모 강연 세 번 연속 — 강북, 강남, 부산(2005). 타임교육홀딩스 1,200명(2008).",
+  "k038": "미국에서",
+  "k039": "뉴저지 블레어 아카데미(2003) · 뉴저지 노던밸리 고교(2004) · 워싱턴대학교 KASCON(2005) · 덴버·플러싱·퀸즈·뉴저지 순회 강연.",
+  "k040": "기업과 공공",
+  "k041": "LG전자 · 삼성중공업 · SK케미칼 · JVM · 매일경제 디자인 최고경영자 과정 · 송파·성동·양천·덕양구청 · 충청도청 · 해양경찰학교.",
+  "k042": "가장 불편한 자리들",
+  "k043": "경기도 소년원(2007년, 200명). 남산 보육원. 전주의 소년소녀가장 아이들.\n<small>강연이 실제로 무엇을 위한 것인지 가르쳐 준 자리들입니다.</small>",
+  "k044": "교회",
+  "k045": "2002년, 쉰다섯의 어머니를 담낭암으로 잃었습니다. 그해부터 교회에서 간증을 시작해 지금까지 이어 오고 있습니다. 서울 사랑의교회와 온누리교회에서 시작해 미주 한인교회로 — LA 순복음교회와 얼바인 온누리교회, 뉴욕 실로암교회와 베이사이드 장로교회, 뉴저지 클로스터 개혁장로교회, 콜로라도 덴버 장로교회.\n<small>2010년 12월 CBS <em>새롭게 하소서</em>, 그리고 CTS <em>청년독수리 300</em>에서 간증으로 방송되었습니다.</small>",
+  "k046": "방송에서",
+  "k047": "MBC — <em>켄트김의 하버드식 학습전략</em> 20부작(2009).\n<small>한국HRD교육방송에서 임직원 대상 시간·인맥 관리 강좌도 진행했습니다.</small>",
+  "k048": "봉사",
+  "k049": "2010년 여덟 명으로 봉사특공대를 만들었습니다. 지금은 2,200명입니다.",
+  "k050": "신동아 인터뷰. 2000년부터 한국 언론이 이 강연 활동을 다뤄 왔습니다.",
+  "k051": "03 · 입시",
+  "k052": "제가 가르쳐 온 것을, 이제 학교에 다시 생각해 보자고 말하고 있습니다.",
+  "k053": "이 페이지의 나머지를 어떻게 읽어야 하는지와 관련된 부분입니다. 저는 대학 입시에 관해 한마디 얹는 외부인이 아닙니다. 두 대륙에서 8년 동안 그것으로 사업을 했습니다.",
+  "k054": "아이비플랜 · 뉴욕",
+  "k055": "2003년 설립. 재미 한인 학생을 위한 SAT 준비. 2005년까지 뉴욕과 뉴저지 세 곳에서 운영했습니다.",
+  "k056": "아이비플랜 · 서울",
+  "k057": "2008년 압구정에서 하버드 동문과 함께 설립. 2009–2010년 SAT 리딩과 라이팅을 직접 가르쳤습니다.",
+  "k058": "청담어학원",
+  "k059": "2005년 이사. 2005–2007년 전국 지점 순회 강연.",
+  "k060": "<em>하버드식 시간관리 타임블럭</em>. 20년 동안 제가 학부모에게 판 것의 대부분은 10대의 시간을 잘 쓰는 방법이었습니다. 그 질문은 사라지지 않았습니다. 달라진 것은 그 시간을 어디에 넣어야 하는가입니다.",
+  "k061": "그 모든 것 이전에",
+  "k062": "1995–96년, 아직 학부생이던 시절 매사추세츠 케임브리지 한인교회에서 주말 SAT 수업을 했습니다.",
+  "k063": "그 주제로 쓴 책",
+  "k064": "<em>아이비리그 조기유학</em> · <em>나도 하버드에 갈 수 있다</em> 1–2권 · <em>하버드식 성공유학</em> · <em>하버드식 시간관리 타임블럭</em>.",
+  "k065": "와이즈맘",
+  "k066": "2011년 <em>엄마가 바뀌어야 세상이 바뀐다</em>는 문장을 걸고 영어교육신문을 창간했고, 2012년 제1회 멘토 컨퍼런스를 열었습니다. 진짜 교육은 암기가 아니라 만남이라는 전제로, 고등학생과 대학생이 멘토를 만나는 자리였습니다.",
+  "k067": "2011년에 창간한 교육신문 와이즈맘. 제호에 걸린 문장은 <em>엄마가 바뀌어야 세상이 바뀐다</em>였습니다. 학부모는 언제나 청중의 절반이었습니다.",
+  "k068": "04 · 1996",
+  "k069": "학생 때 한 일 중에, AI가 대신해 줄 수 없는 것.",
+  "k070": "학부생 시절 전 세계 정치·경제 지도자 1만 명에게 편지를 썼습니다. 그중 300명 넘게 답장이 왔습니다.",
+  "k071": "워런 버핏, 친필<br/>미국 중앙정보국 국장<br/>잭 웰치 · 코닥, 코카콜라, 포드, 마쓰시타, 미쓰비시 회장<br/>예후디 메뉴인 · 에드워드 케네디 상원의원<br/>하버드 역대 총장 여섯 분<br/>마거릿 대처 여사 측의 접견 거절 — 서면으로",
+  "k072": "같은 해에 중국·일본·싱가포르·홍콩·말레이시아·태국을 돌며 베이징대, 도쿄대, 싱가포르국립대 학생들을 만났습니다. 30년 뒤 아시아를 움직이고 있을 사람들이라고 생각했습니다. 나중에 그 이야기를 <em>만 명에게 편지를 써라</em>로 썼습니다.",
+  "k073": "제가 학생들에게 이 이야기를 하는 이유는, 언어 모델이 편지 1만 통을 오후 한나절에 써 낼 수 있기 때문입니다. 바로 그게 핵심입니다. 그때도 자동화할 수 없었고 지금도 자동화할 수 없는 것은, 그것을 실제로 보내는 사람이 되는 일, 그리고 답장 300통이 도착할 때까지 거기 서 있는 일입니다.",
+  "k074": "<em>만화 보다가 하버드 갔습니다</em> — 2000년에 나온 첫 책. 그 바탕이 된 만화 <em>하버드맨</em>은 동아일보에 연재되었습니다.",
+  "k075": "05 · 방송",
+  "k076": "방송에서.",
+  "k077": "<span class=\"ch2\">CBS · 세바시</span><b>세상을 바꾸는 시간 15분</b>한국에서 가장 큰 공개 강연 플랫폼.",
+  "k078": "<span class=\"ch2\">EBS · UN</span><b>UNAI 좌담회 진행</b>반기문 사무총장님과 UN 대사들과 함께.",
+  "k079": "<span class=\"ch2\">KBS · 아침마당</span><b>세 차례 출연</b>2000년, 2001년, 2012년.",
+  "k080": "<span class=\"ch2\">CTS</span><b>청년독수리 300</b>청년들 앞에서 한 강연.",
+  "k081": "EBS · 다큐프라임",
+  "k082": "10대 자살에 관한 보고서",
+  "k083": "다큐멘터리",
+  "k084": "KBS · 9시 뉴스",
+  "k085": "보도, 2000년",
+  "k086": "뉴스",
+  "k087": "MBC",
+  "k088": "켄트김의 하버드식 학습전략 — 20부작, 2009년",
+  "k089": "시리즈",
+  "k090": "CBS · 새롭게 하소서",
+  "k091": "간증 출연, 2010년 12월 1일",
+  "k092": "인터뷰",
+  "k093": "JTBC · SBS · EBS",
+  "k094": "힘있는 이야기 쇼 · 국민 DJ를 찾습니다 은상 2012 · 부모 멘토 2010",
+  "k095": "출연",
+  "k096": "지면에서",
+  "k097": "헤드라인제주",
+  "k098": "JDC, 하버드 출신 멘토 켄트 김 초청",
+  "k099": "기사",
+  "k100": "제주특별자치도",
+  "k101": "JDC 글로벌 아카데미 11번째 강연 — 켄트 김",
+  "k102": "보도자료",
+  "k103": "장성뉴스",
+  "k104": "와이즈맘 교육미디어 켄트 김 초청 강연",
+  "k105": "기사",
+  "k106": "시사뉴스피플",
+  "k107": "“재미없으면 어떻게 일을 합니까”",
+  "k108": "인터뷰",
+  "k109": "세바시",
+  "k110": "미니 인터뷰 — 교육신문 와이즈맘 발행인 켄트 김",
+  "k111": "인터뷰",
+  "k112": "2000년부터 한국 언론이 이 강연 활동을 다뤄 왔습니다. 제주 강연의 제목은 <em>젊어서 미치지 않으면 미친 것이다</em>였습니다. 이혼과 가난, 그리고 하버드에 대한 이야기였습니다.",
+  "k113": "직접 제작하고 진행한 인터뷰 시리즈 <em>켄트김의 쇼</em>도 있습니다. 배우 이순재 선생님, 복서 홍수환 선수, 한국 최초의 힙합 가수 현진영 씨 등이 출연했습니다.",
+  "k114": "06 · 그 밖에",
+  "k115": "책과 노래, 그리고 스스로 목숨을 끊으려 했던 아이와 함께 만든 힙합 음반.",
+  "k116": "책",
+  "k117": "23권 출간.\n<div class=\"books\">만화 보다가 하버드 갔습니다<br/>하버드식 인생성공법<br/>아이비리그 조기유학<br/>영어특공대 보카포스 1–2<br/>멈추어 서기엔 너무 이른 — 한국인에게 보내는 편지<br/>우등비결 1–2<br/>단 한 줄의 승리학<br/>만 명에게 편지를 써라<br/>나도 하버드에 갈 수 있다 1–2<br/>뻔뻔한 하버드 경제지식<br/>베리타스<br/>하버드식 성공유학<br/>하버드식 시간관리 타임블럭</div>\n<small>만화 <em>하버드맨</em>을 동아일보에 연재했습니다.</small>",
+  "k118": "음악",
+  "k119": "500곡을 썼고 407곡을 유통했습니다.\n<small>마흔이던 2012년에 작곡을 배우기 시작했습니다.</small>",
+  "k120": "왕따 아리랑",
+  "k121": "국악방송 대상. 한국어·영어·일본어로 녹음했고 300회쯤 공연했습니다.\n<small>서울국제고에서 왕따를 당하고 6층에서 뛰어내렸던 학생 송기환 군과 함께 만들었습니다. 그는 살아났습니다. 프로야구 경기장에서 네 번 라이브로 함께 무대에 섰고, 그 뒤로 전국의 학교와 교회에서 계속 함께 공연하고 있습니다.</small>",
+  "k122": "현재",
+  "k123": "플라토스쿨 이사장(2023) · 게임 스튜디오 디아더 설립자(2022) · 국제브레인스포츠협회 이사장(2022) · 대한노인회 정책의원.\n<small>이전에는 남수단에 학교와 마을을 짓는 희망고의 총단장, 독도사랑회 해외홍보단장이었습니다.</small>",
+  "k124": "전시",
+  "k125": "CES 라스베이거스 2023 · 도쿄 게임쇼 2022 · 독일 게임스컴 2022 · 게임스컴 아시아 × 태국 게임쇼 2025 한국 공동관.\n<small>2022년 제1·2회 메타-NFT 코리아 컨퍼런스를 열었습니다. 각각 2,000명과 5,000명이 왔습니다.</small>",
+  "k126": "07 · 수상",
+  "k127": "다른 사람들의 평가.",
+  "k129": "<strong>대상</strong> — 인천국제공항 AI-PORT 아이디어 공모전\n<small>체류 여객을 각자의 언어로 안내하는 AI 서비스 AIDA. 2026년 6월 공항공사와 정식 협약으로 이어졌습니다.</small>",
+  "k131": "<strong>우수상</strong> — 제107회 전국체전 및 제46회 전국장애인체전 공식 응원가, 제주\n<small>제주특별자치도지사 표창.</small>",
+  "k133": "<strong>장려상</strong> — YTN 서울타워 숏폼 공모전",
+  "k135": "<strong>한국 공동관 참가</strong> — 게임스컴 아시아 × 태국 게임쇼, 방콕\n<small>한국 공동관에 선정되었고, 현장에서 태국 퍼블리셔 Debuz와 협력 MOU를 체결했습니다.</small>",
+  "k137": "<strong>초청 전시</strong> — 글로벌 게임 챌린지 2025, 중앙대학교\n<small>한국게임학회 주최 우수 인디게임 쇼케이스에 선정되었습니다.</small>",
+  "k138": "AI-PORT 공모전에 이어 2026년 6월 24일 인천국제공항에서 진행된 협약식.",
+  "k139": "제107회 전국체전 공식 응원가 우수상. 제주도지사 표창.",
+  "k140": "08 · 초청",
+  "k141": "학교로 세션을 부르세요.",
+  "k142": "학교 이름과 지역, 어떤 청중을 생각하고 계신지, 그리고 대략 언제인지 적어 보내 주세요. 그 그룹에 맞는 세션이 어떤 모습일지 답장드리겠습니다.",
+  "k143": "<strong style=\"color:var(--ink)\">비용에 관하여.</strong> 강연료는 학교 예산에 맞춥니다. 배정하신 금액을 말씀해 주시면 거기에 맞춰 진행하겠습니다. 저는 서울에 있고 인근 지역을 자주 다닙니다. 한 도시의 여러 학교가 같은 주에 세션을 원하시면 이동과 숙박을 나눠 부담해 주시길 부탁드립니다. 한 학교 단독이라면 현지 숙박만으로도 충분합니다. 돈이 세션이 열리지 않는 이유가 되어서는 안 된다고 생각합니다.",
+  "k145": "성함",
+  "k146": "이메일",
+  "k147": "학교 또는 기관",
+  "k148": "도시와 국가",
+  "k149": "청중과 대략적인 시기",
+  "k150": "비워 두세요",
+  "k151": "보내기",
+  "k153": "자바스크립트 없이도 폼이 작동합니다. 보내신 뒤 확인 페이지로 이동합니다.",
+  "k154": "켄트 김 · 디아더 대표 · 서울",
+  "k012": "2026년 8월, 동그라미재단 AI 컨퍼런스 데이 발표.",
+  "k030": "발표 중. 세션은 말로 끝나지 않고, 그 자리에서 만든 것을 열어 보는 것으로 끝난다.",
+  "k144": "세션의 끝은 이렇게 생겼다 — 한 시간 전에 없던 것을 누군가 쓰고 있는 장면.",
+  "k155": "<a href=\"https://deother.vercel.app\">deother.vercel.app</a>"
+};
+  const ATTR = {
+    "f-when": ["placeholder", "어느 학년인지, 몇 명인지, 그리고 언제쯤을 생각하시는지."]
+  };
+  const META = {
+    title: "켄트 김",
+    desc: "켄트 김은 1996년부터 2016년까지 전국에서 100만 명이 넘는 학생을 만났고, 뉴욕과 서울에서 아이비리그 입시 학원을 운영했으며, 지난 6개월 동안 서른여덟 개를 만들었습니다. AI가 결과물을 대신 내놓는 시대에 학생이 무엇을 증명할 수 있는지를 학교에서 이야기합니다."
+  };
+
+  const nodes = document.querySelectorAll("[data-i18n]");
+  const EN = {};
+  nodes.forEach(n => { EN[n.dataset.i18n] = n.innerHTML; });
+  const enTitle = document.title;
+  const descEl = document.querySelector('meta[name="description"]');
+  const enDesc = descEl ? descEl.content : "";
+  const enAttr = {};
+  Object.keys(ATTR).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) enAttr[id] = el.getAttribute(ATTR[id][0]);
+  });
+
+  const btn = document.getElementById("lang");
+
+  function apply(lang) {
+    const ko = lang === "ko";
+    nodes.forEach(n => {
+      const k = n.dataset.i18n;
+      const v = ko ? (KO[k] !== undefined ? KO[k] : EN[k]) : EN[k];
+      if (n.innerHTML !== v) n.innerHTML = v;
+    });
+    Object.keys(ATTR).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute(ATTR[id][0], ko ? ATTR[id][1] : enAttr[id]);
+    });
+    document.documentElement.lang = ko ? "ko" : "en";
+    document.title = ko ? META.title : enTitle;
+    if (descEl) descEl.content = ko ? META.desc : enDesc;
+    if (btn) btn.textContent = ko ? "English" : "한국어";
+    window.__lang = lang;
+  }
+
+  let initial = "en";
+  try {
+    const saved = localStorage.getItem("lang");
+    if (saved === "ko" || saved === "en") initial = saved;
+    else if ((navigator.language || "").toLowerCase().indexOf("ko") === 0) initial = "ko";
+  } catch (e) {
+    if ((navigator.language || "").toLowerCase().indexOf("ko") === 0) initial = "ko";
+  }
+  apply(initial);
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.lang === "ko" ? "en" : "ko";
+      apply(next);
+      try { localStorage.setItem("lang", next); } catch (e) {}
+    });
+  }
+})();
 </script>
 </body>
 </html>
